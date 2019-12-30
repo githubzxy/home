@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>主界面</title>
+<link rel="stylesheet" th:href="@{/bui/css/bs3/dpl-min.css}" />
+<link rel="stylesheet" th:href="@{/bui/css/bs3/bui-min.css}" />
+<link rel="stylesheet" th:href="@{/frame/main.css}" />
+<script charset="utf-8" th:src="@{/common/sq.js}"></script>
+</head>
+<body>
+	<script th:inline="javascript">
+/*<![CDATA[*/ 
+	seajs.config({
+		paths : {
+			common : "/common",
+			kmmsApp : "/kmmsApp",
+			bui : "/bui"
+		}
+	});
+	seajs.use(['/frame/main','common/data/PostLoad'],function(Main,PL){
+// 		var pl = new PL({url : '/per'});
+		var staticPerData = [
+			{
+				"id":"6678757201ac4327a4de6bf6d1655bb6",
+				"text":"移动应用",
+				"href":null,
+				"parentId":"4028811c41a001630141a137ec020203",
+				"mark":"app",
+				"exist":true,
+				"idx":1,
+				"type":1,
+				"icon":null,
+				"children":[
+					{ 
+		                "id": "3164652f39604ae38d74d6e39b99deb0", 
+		                "text": "移动应用数据管理", 
+		                "href": null, 
+		                "parentId": "6678757201ac4327a4de6bf6d1655bb6", 
+		                "mark": "app_data_manager", 
+		                "exist": true, 
+		                "idx": 1, 
+		                "type": 1, 
+		                "icon": null, 
+		                "children": [{
+		                	"id": "cac54fdbaec549eeb5bcac8e4a5d9672", 
+		                    "text": "巡检基础数据管理", 
+		                    "href": "/kmmsApp/page/basicInformation", 
+		                    "parentId": "3164652f39604ae38d74d6e39b99deb0", 
+		                    "mark": "base_data_manager", 
+		                    "exist": true, 
+		                    "idx": 1, 
+		                    "type": 1, 
+		                    "icon": "images/leftNavigator/opt_pair.png", 
+		                    "children": []
+		                },{
+		                	"id": "729469ef646046d1a92c1ce35682b3af", 
+		                    "text": "巡检上传资料管理", 
+		                    "href": "/kmmsApp/page/uploadFileManage", 
+		                    "parentId": "3164652f39604ae38d74d6e39b99deb0", 
+		                    "mark": "import_resource_manager", 
+		                    "exist": true, 
+		                    "idx": 1, 
+		                    "type": 1, 
+		                    "icon": "images/leftNavigator/opt_pair.png", 
+		                    "children": []
+		                },{
+		                	"id": "bebc7507f81246db8f01d07a6629a6c3", 
+		                    "text": "巡检数据统计管理", 
+		                    "href": "/workorder/jnWorkOrderBusiZGGCS/circuitOrderNodeForZGGCS", 
+		                    "parentId": "3164652f39604ae38d74d6e39b99deb0", 
+		                    "mark": "data_statistics_manager", 
+		                    "exist": true, 
+		                    "idx": 1, 
+		                    "type": 1, 
+		                    "icon": "images/leftNavigator/opt_pair.png", 
+		                    "children": []
+		                },
+// 		                {
+// 		                	"id": "d6dcda022bfe4ae0ad3967c66abad31f", 
+// 		                    "text": "副处长", 
+// 		                    "href": "/workorder/jnWorkOrderBusiFCZ/circuitOrderNodeForFCZ", 
+// 		                    "parentId": "3164652f39604ae38d74d6e39b99deb0", 
+// 		                    "mark": "circuitdesign", 
+// 		                    "exist": true, 
+// 		                    "idx": 1, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                },{
+// 		                	"id": "9127bfe374c04d62bccd599692bb8088", 
+// 		                    "text": "段长", 
+// 		                    "href": "/workorder/jnWorkOrderBusiDZ/circuitOrderNodeForDZ", 
+// 		                    "parentId": "3164652f39604ae38d74d6e39b99deb0", 
+// 		                    "mark": "circuitdesign", 
+// 		                    "exist": true, 
+// 		                    "idx": 1, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                },{
+// 		                	"id": "fac44e108f02485c89a02fa2c061d5e3", 
+// 		                    "text": "副段长", 
+// 		                    "href": "/workorder/jnWorkOrderBusiFDZ/circuitOrderNodeForFDZ", 
+// 		                    "parentId": "3164652f39604ae38d74d6e39b99deb0", 
+// 		                    "mark": "circuitdesign", 
+// 		                    "exist": true, 
+// 		                    "idx": 1, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                },{
+// 		                	"id": "14bda112171b451aa47300956203e372", 
+// 		                    "text": "技术科科长", 
+// 		                    "href": "/workorder/jnWorkOrderBusiJSKKZ/circuitOrderNodeForKZ", 
+// 		                    "parentId": "3164652f39604ae38d74d6e39b99deb0", 
+// 		                    "mark": "circuitdesign", 
+// 		                    "exist": true, 
+// 		                    "idx": 1, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                },{
+// 		                	"id": "14bda112171b451aa4730095620ea963", 
+// 		                    "text": "执行车间", 
+// 		                    "href": "/workorder/jnWorkOrderBusiCJ/circuitOrderNodeForCJ", 
+// 		                    "parentId": "3164652f39604ae38d74d6e39b99deb0", 
+// 		                    "mark": "circuitdesign", 
+// 		                    "exist": true, 
+// 		                    "idx": 1, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                },{
+// 		                	"id": "14bda112171b451aa47300956203e654", 
+// 		                    "text": "电路统计", 
+// 		                    "href": "/workorder/circuitCountAction/circuitCountMain", 
+// 		                    "parentId": "3164652f39604ae38d74d6e39b99deb0", 
+// 		                    "mark": "circuitdesign", 
+// 		                    "exist": true, 
+// 		                    "idx": 1, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                }
+		                ]
+					}
+				]
+			},
+// 			{
+// 				"id":"4028811c41a001630141a13804972222",
+// 				"text":"乌局菜单",
+// 				"href":null,
+// 				"parentId":"4028811c41a001630141a137ec020203",
+// 				"mark":"listTables_manager",
+// 				"exist":true,
+// 				"idx":7,
+// 				"type":1,
+// 				"icon":null,
+// 				"children":[
+// 					{ 
+// 		                "id": "62CB8231CB730688E050007F0100DDD1", 
+// 		                "text": "配置管理", 
+// 		                "href": null, 
+// 		                "parentId": "4028811c41a001630141a13804972222", 
+// 		                "mark": "trans_resource", 
+// 		                "exist": true, 
+// 		                "idx": 1, 
+// 		                "type": 1, 
+// 		                "icon": null, 
+// 		                "children": [{
+// 		                	"id": "62CB8231CA740688E050107F010FFF1", 
+// 		                    "text": "类型维护", 
+// 		                    "href": "/sim/configType", 
+// 		                    "parentId": "62CB8231CB730688E050007F0100DDD1", 
+// 		                    "mark": "circuitdesign", 
+// 		                    "exist": true, 
+// 		                    "idx": 1, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                },{
+// 		                	"id": "62CB8231CA740688E050107F010FFF2", 
+// 		                    "text": "配置维护", 
+// 		                    "href": "/sim/configItem", 
+// 		                    "parentId": "62CB8231CB730688E050007F0100DDD1", 
+// 		                    "mark": "circuitdesign", 
+// 		                    "exist": true, 
+// 		                    "idx": 1, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                }]
+// 					}
+// 				]
+// 			},
+// 			{
+// 				"id":"4028811c41a001630141a13804970000",
+// 				"text":"传输资源管理（济南局）",
+// 				"href":null,
+// 				"parentId":"4028811c41a001630141a137ec020203",
+// 				"mark":"listTables_manager",
+// 				"exist":true,
+// 				"idx":7,
+// 				"type":1,
+// 				"icon":null,
+// 				"children":[
+// 					{ 
+// 		                "id": "62CB8231CB730688E050007F010021D1", 
+// 		                "text": "传输资源查询", 
+// 		                "href": null, 
+// 		                "parentId": "4028811c41a001630141a13804970000", 
+// 		                "mark": "trans_resource", 
+// 		                "exist": true, 
+// 		                "idx": 1, 
+// 		                "type": 1, 
+// 		                "icon": null, 
+// 		                "children": [{
+// 		                    "id": "62CB8231CA740688E050107F01033377", 
+// 		                    "text": "辅助设计入口", 
+// 		                    "href": "/circuitdesign/circuitDesignPage", 
+// 		                    "parentId": "62CB8231CB730688E050007F010021D11", 
+// 		                    "mark": "circuitdesign", 
+// 		                    "exist": true, 
+// 		                    "idx": 1, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                },{
+// 		                    "id": "62CB8231CA740688E050107F01022777", 
+// 		                    "text": "问题库管理", 
+// 		                    "href": "/transform/problemBase", 
+// 		                    "parentId": "62CB8231CB730688E050007F010021D11", 
+// 		                    "mark": "problemFormal", 
+// 		                    "exist": true, 
+// 		                    "idx": 1, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                },{
+// 		                    "id": "62CB8231CA740688E050107F01022888", 
+// 		                    "text": "待办问题库", 
+// 		                    "href": "/transform/problemTodo", 
+// 		                    "parentId": "62CB8231CB730688E050007F010021D11", 
+// 		                    "mark": "problemSpare", 
+// 		                    "exist": true, 
+// 		                    "idx": 2, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                },{
+// 		                    "id": "62CB8231CA740688E050107F01022666", 
+// 		                    "text": "电路设计（综合网管）", 
+// 		                    "href": "/transform/circuitWorkOrderZhwgMain", 
+// 		                    "parentId": "62CB8231CB730688E050007F010021D11", 
+// 		                    "mark": "tran_order_fxs", 
+// 		                    "exist": true, 
+// 		                    "idx": 3, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                },{
+// 		                    "id": "62CB8231CB740688E050007F220056E2", 
+// 		                    "text": "光功率趋势", 
+// 		                    "href": "/transform/opticalPowerAlys/", 
+// // 		                    "href": "/transform/opticalPowerAlys/showPage?cardId=58AA685EF47F8C0CE0501FAC026E73F1&year=2019&offsetRange=3", 
+// 		                    "parentId": "62CB8231CB730688E050007F010021D11", 
+// 		                    "mark": "net_element", 
+// 		                    "exist": true, 
+// 		                    "idx": 1, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                },{
+// 		                    "id": "62CB8231CB740688E050007F220033E2", 
+// 		                    "text": "端口类型", 
+// // 		                    "href": "/transform/portType", 
+// 		                    "href": "/circuitdesign/portType", 
+// 		                    "parentId": "62CB8231CB730688E050007F010021D11", 
+// 		                    "mark": "net_element", 
+// 		                    "exist": true, 
+// 		                    "idx": 2, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                },{
+// 		                    "id": "62CB8231CB740688E050007F220021E2", 
+// 		                    "text": "板卡维护", 
+// // 		                    "href": "/transform/card", 
+// 		                    "href": "/circuitdesign/card", 
+// 		                    "parentId": "62CB8231CB730688E050007F010021D11", 
+// 		                    "mark": "net_element", 
+// 		                    "exist": true, 
+// 		                    "idx": 2, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                },{
+// 		                    "id": "62CB8231CB740688E050007F010021E2", 
+// 		                    "text": "网元查询", 
+// 		                    "href": "/transform/netElementQuery", 
+// 		                    "parentId": "62CB8231CB730688E050007F010021D11", 
+// 		                    "mark": "net_element", 
+// 		                    "exist": true, 
+// 		                    "idx": 2, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                },{
+// 		                    "id": "62CB8231CB740688E050007F010021E3", 
+// 		                    "text": "电路查询", 
+// 		                    "href": "/transform/circuitQueryJN", 
+// 		                    "parentId": "62CB8231CB730688E050007F010021D12", 
+// 		                    "mark": "tran_port", 
+// 		                    "exist": true, 
+// 		                    "idx": 3, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                }] 
+// 		            },
+// 		            {
+// 						"id":"4028811c41a001630141a137fc3c0354",
+// 						"text":"资源工单",
+// 						"href":null,
+// 						"parentId":"4028811c41a001630141a13804970000",
+// 						"mark":"alarm_monitor",
+// 						"exist":true,"idx":1,
+// 						"type":1,
+// 						"icon":null,
+// 						"children":[
+// 							{
+// 			                    "id": "62CB8231CA740688E050107F0001qyy1", 
+// 			                    "text": "电路工单（发起申请单）", 
+// 			                    "href": "/workorder/applyOrderNodeForApplyActionJN/applyOrderNodeForApplyEntrance", 
+// 			                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 			                    "mark": "tran_order_fqsq", 
+// 			                    "exist": true, 
+// 			                    "idx": 5, 
+// 			                    "type": 1, 
+// 			                    "icon": "images/leftNavigator/opt_pair.png", 
+// 			                    "children": []
+// 			                },
+// 			                {
+// 			                    "id": "62CB8231CA740688E050107F0002qyy2", 
+// 			                    "text": "电路工单（审批申请单）", 
+// 			                    "href": "/workorder/applyOrderNodeForApprovalActionJN/applyOrderNodeForApproval", 
+// 			                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 			                    "mark": "tran_order_fxs", 
+// 			                    "exist": true, 
+// 			                    "idx": 5, 
+// 			                    "type": 1, 
+// 			                    "icon": "images/leftNavigator/opt_pair.png", 
+// 			                    "children": []
+// 			                },
+// 			                {
+// 			                    "id": "62CB8231CA740688E050107F01022003", 
+// 			                    "text": "电路工单（电路设计）", 
+// 			                    "href": "/workorder/circuitOrderNodeForStartAndFileActionJN/circuitOrderNodeForStartAndFileEntrance", 
+// 			                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 			                    "mark": "tran_order_fxs", 
+// 			                    "exist": true, 
+// 			                    "idx": 5, 
+// 			                    "type": 1, 
+// 			                    "icon": "images/leftNavigator/opt_pair.png", 
+// 			                    "children": []
+// 			                },
+// 			                {
+// 			                    "id": "62CB8231CA740688E050107F01022004", 
+// 			                    "text": "电路工单（工单签发）", 
+// 			                    "href": "/workorder/circuitOrderNodeForIssueActionJN/circuitOrderNodeForIssue", 
+// 			                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 			                    "mark": "tran_order_dwc", 
+// 			                    "exist": true, 
+// 			                    "idx": 5, 
+// 			                    "type": 1, 
+// 			                    "icon": "images/leftNavigator/opt_pair.png", 
+// 			                    "children": []
+// 			                },
+// 							{
+// 			                    "id": "62CB8231CA740688E050107F01022005", 
+// 			                    "text": "电路工单（工单受理）", 
+// 			                    "href": "/workorder/circuitOrderNodeForAcceptActionJN/circuitOrderNodeForAcceptEntrance", 
+// 			                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 			                    "mark": "tran_order_dwd", 
+// 			                    "exist": true, 
+// 			                    "idx": 5, 
+// 			                    "type": 1, 
+// 			                    "icon": "images/leftNavigator/opt_pair.png", 
+// 			                    "children": []
+// 			                },
+// 							{
+// 			                    "id": "62CB8231CA740688E050107F01022006", 
+// 			                    "text": "电路工单（工单完成反馈）", 
+// 			                    "href": "/workorder/circuitOrderNodeForExecuteActionJN/circuitOrderNodeForExecute", 
+// 			                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 			                    "mark": "tran_order_wgzx", 
+// 			                    "exist": true, 
+// 			                    "idx": 5, 
+// 			                    "type": 1, 
+// 			                    "icon": "images/leftNavigator/opt_pair.png", 
+// 			                    "children": []
+// 			                },
+// 							{
+// 			                    "id": "62CB8231CA740688E050107F0007qyy5", 
+// 			                    "text": "申请单查询", 
+// 			                    "href": "/workorder/applyOrderNodeForSelectActionJN/applyOrderNodeForSelect", 
+// 			                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 			                    "mark": "tran_order_wgzx", 
+// 			                    "exist": true, 
+// 			                    "idx": 6, 
+// 			                    "type": 1, 
+// 			                    "icon": "images/leftNavigator/opt_pair.png", 
+// 			                    "children": []
+// 			                },
+// 			                {
+// 			                    "id": "62CB8231CA740688E050107F010221E52", 
+// 			                    "text": "电路用途", 
+// // 			                    "href": "/transform/circuitUse", 
+// 			                    "href": "/circuitdesign/circuitUse", 
+// 			                    "parentId": "4028811c41a001630141a137fc3c03548", 
+// 			                    "mark": "tran_order_wgzx", 
+// 			                    "exist": true, 
+// 			                    "idx": 5, 
+// 			                    "type": 1, 
+// 			                    "icon": "images/leftNavigator/opt_pair.png", 
+// 			                    "children": []
+// 			                }
+// 						]
+// 					},{
+// 		            	"id": "62CB8231CB730688E050007F010021D4", 
+// 		                "text": "传输资源统计", 
+// 		                "href": null, 
+// 		                "parentId": "4028811c41a001630141a13804970000", 
+// 		                "mark": "trans_resource", 
+// 		                "exist": true, 
+// 		                "idx": 4, 
+// 		                "type": 1, 
+// 		                "icon": null, 
+// 		                "children": [
+// 			                {
+// 			                    "id": "62CB8231CB740688E050007F010021T10", 
+// 			                    "text": "网元统计", 
+// 			                    "href": "/transform/CKTDeviceStatistics", 
+// 			                    "parentId": "62CB8231CB730688E050007F010021D49", 
+// 			                    "mark": "trans_system", 
+// 			                    "exist": true, 
+// 			                    "idx": 1, 
+// 			                    "type": 1, 
+// 			                    "icon": "images/leftNavigator/opt_pair.png", 
+// 			                    "children": []
+// 			                },
+// 			                {
+// 			                    "id": "62CB8231CB740688E050007F010021T20", 
+// 			                    "text": "时隙统计", 
+// 			                    "href": "/transform/CKTtimeslotStatisticsJN", 
+// 			                    "parentId": "62CB8231CB730688E050007F010021D45", 
+// 			                    "mark": "trans_system", 
+// 			                    "exist": true, 
+// 			                    "idx": 2, 
+// 			                    "type": 1, 
+// 			                    "icon": "images/leftNavigator/opt_pair.png", 
+// 			                    "children": []
+// 			                }] 
+// 		            },{
+// 		            	"id": "62CB8231CB730688E050007F010021D5", 
+// 		                "text": "跳接管理", 
+// 		                "href": null, 
+// 		                "parentId": "4028811c41a001630141a13804970000", 
+// 		                "mark": "trans_resource", 
+// 		                "exist": true, 
+// 		                "idx": 5, 
+// 		                "type": 1, 
+// 		                "icon": null, 
+// 		                "children": [{
+// 		                    "id": "62CB8231CB740688E050007F010021TW1", 
+// 		                    "text": "跳接维护", 
+// 		                    "href": "/transform/jumpMaintain", 
+// 		                    "parentId": "62CB8231CB730688E050007F010021D5", 
+// 		                    "mark": "trans_system", 
+// 		                    "exist": true, 
+// 		                    "idx": 1, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                }] 
+// 		            },{
+// 		            	"id": "62CB8231CB730688E050007F010021D6", 
+// 		                "text": "信息发布", 
+// 		                "href": null, 
+// 		                "parentId": "4028811c41a001630141a13804970000", 
+// 		                "mark": "trans_resource", 
+// 		                "exist": true, 
+// 		                "idx": 5, 
+// 		                "type": 1, 
+// 		                "icon": null, 
+// 		                "children": [{
+// 		                    "id": "62CB8231CB740688E050007F010021AA1", 
+// 		                    "text": "信息发布", 
+// 		                    "href": "/transform/messagePage", 
+// 		                    "parentId": "62CB8231CB730688E050007F010021D6", 
+// 		                    "mark": "trans_system", 
+// 		                    "exist": true, 
+// 		                    "idx": 1, 
+// 		                    "type": 1, 
+// 		                    "icon": "images/leftNavigator/opt_pair.png", 
+// 		                    "children": []
+// 		                }] 
+// 		            }]
+// 				},
+// 				{
+// 					"id":"4028811c41a001630141a13804970413",
+// 					"text":"传输资源管理（湖南地区）",
+// 					"href":null,
+// 					"parentId":"4028811c41a001630141a137ec020203",
+// 					"mark":"listTables_manager",
+// 					"exist":true,
+// 					"idx":7,
+// 					"type":1,
+// 					"icon":null,
+// 					"children":[
+// 						{
+// 							"id":"4028811c41a001630141a137fc3c0354",
+// 							"text":"电路工单",
+// 							"href":null,
+// 							"parentId":"4028811c41a001630141a13804970413",
+// 							"mark":"alarm_monitor",
+// 							"exist":true,"idx":1,
+// 							"type":1,
+// 							"icon":null,
+// 							"children":[
+								
+// 				                {
+// 				                    "id": "62CB8231CA740688E050107F0102qyy1", 
+// 				                    "text": "电路工单（发起申请单）", 
+// 				                    "href": "/workorder/applyOrderNodeForApplyActionGT/applyOrderNodeForApplyEntrance", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 				                    "mark": "tran_order_fqsq", 
+// 				                    "exist": true, 
+// 				                    "idx": 5, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 				                {
+// 				                    "id": "62CB8231CA740688E050107F0102qyy2", 
+// 				                    "text": "电路工单（审批申请单）", 
+// 				                    "href": "/workorder/applyOrderNodeForApprovalActionGT/applyOrderNodeForApproval", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 				                    "mark": "tran_order_fxs", 
+// 				                    "exist": true, 
+// 				                    "idx": 5, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 				                {
+// 				                    "id": "62CB8231CA740688E050107F010221E3", 
+// 				                    "text": "电路工单（电路设计）", 
+// 				                    "href": "/workorder/circuitOrderNodeForStartAndFileActionGT/circuitOrderNodeForStartAndFileEntrance", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 				                    "mark": "tran_order_fxs", 
+// 				                    "exist": true, 
+// 				                    "idx": 5, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 				                {
+// 				                    "id": "62CB8231CA740688E050107F010221E2", 
+// 				                    "text": "电路工单（工单签发）", 
+// 				                    "href": "/workorder/circuitOrderNodeForIssueActionGT/circuitOrderNodeForIssue", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 				                    "mark": "tran_order_dwc", 
+// 				                    "exist": true, 
+// 				                    "idx": 5, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 								{
+// 				                    "id": "62CB8231CA740688E050107F010221E1", 
+// 				                    "text": "电路工单（工单受理）", 
+// 				                    "href": "/workorder/circuitOrderNodeForAcceptActionGT/circuitOrderNodeForAcceptEntrance", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 				                    "mark": "tran_order_dwd", 
+// 				                    "exist": true, 
+// 				                    "idx": 5, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 								{
+// 				                    "id": "62CB8231CA740688E050107F01022155", 
+// 				                    "text": "电路工单（工单完成反馈）", 
+// 				                    "href": "/workorder/circuitOrderNodeForExecuteActionGT/circuitOrderNodeForExecute", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 				                    "mark": "tran_order_wgzx", 
+// 				                    "exist": true, 
+// 				                    "idx": 5, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 								{
+// 				                    "id": "62CB8231CA740688E050107F0102qyy5", 
+// 				                    "text": "申请单查询", 
+// 				                    "href": "/workorder/applyOrderNodeForSelectActionGT/applyOrderNodeForSelect", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 				                    "mark": "tran_order_wgzx", 
+// 				                    "exist": true, 
+// 				                    "idx": 6, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 				                {
+// 				                    "id": "62CB8231CA740688E050107F01022166", 
+// 				                    "text": "电路用途", 
+// 				                    "href": "/transform/circuitUse", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0354", 
+// 				                    "mark": "tran_order_wgzx", 
+// 				                    "exist": true, 
+// 				                    "idx": 5, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                }
+// 							]
+// 						},
+// 						{
+// 							"id":"4028811c41a001630141a137fc3c0353",
+// 							"text":"段内工单",
+// 							"href":null,
+// 							"parentId":"4028811c41a001630141a13804970413",
+// 							"mark":"alarm_monitor",
+// 							"exist":true,"idx":1,
+// 							"type":1,
+// 							"icon":null,
+// 							"children":[
+// 								{
+// 				                    "id": "62CB8231CA740688E050107F010221D7", 
+// 				                    "text": "段内工单（电务段）", 
+// 				                    "href": "/transform/circuitInnerWorkOrderDwdMain", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0353", 
+// 				                    "mark": "tran_order_duan", 
+// 				                    "exist": true, 
+// 				                    "idx": 5, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 				                {
+// 				                    "id": "62CB8231CA740688E050007F010021D8", 
+// 				                    "text": "段内工单（网管中心）", 
+// 				                    "href": "/transform/circuitInnerWorkOrderWgzxMain", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0353", 
+// 				                    "mark": "tran_order_wangguanzhongxin", 
+// 				                    "exist": true, 
+// 				                    "idx": 5, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+				                
+// 							]
+// 						},
+// 						{
+// 							"id":"4028811c41a001630141a137fc3c0355",
+// 							"text":"跳接维护",
+// 							"href":null,
+// 							"parentId":"4028811c41a001630141a13804970413",
+// 							"mark":"hopping_maintain",
+// 							"exist":true,
+// 							"idx":1,
+// 							"type":1,
+// 							"icon":null,
+// 							"children":[
+// 								{
+// 				                    "id": "62CB8231CA740688E050107F010221D9", 
+// 				                    "text": "跳接维护", 
+// 				                    "href": "/transform/jumpMaintain", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0355", 
+// 				                    "mark": "jump_maintain", 
+// 				                    "exist": true, 
+// 				                    "idx": 0, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                }
+// 							]
+// 						},
+// 						{
+// 							"id":"62CB8231CB730688E050007F010021D4",
+// 							"text":"统计分析（段）",
+// 							"href":null,
+// 							"parentId":"4028811c41a001630141a13804970413",
+// 							"mark":"count_alysize",
+// 							"exist":true,
+// 							"idx":1,
+// 							"type":1,
+// 							"icon":null,
+// 							"children":[
+// 								{
+// 				                    "id": "62CB8231CB740688E050007F010021T0", 
+// 				                    "text": "预警阈值", 
+// 				                    "href": "/transform/thresholdSet", 
+// 				                    "parentId": "62CB8231CB730688E050007F010021D4", 
+// 				                    "mark": "trans_system", 
+// 				                    "exist": true, 
+// 				                    "idx": 0, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 				                {
+// 				                    "id": "62CB8231CB740688E050007F010021T1", 
+// 				                    "text": "网元统计", 
+// 				                    "href": "/transform/CKTDeviceStatistics", 
+// 				                    "parentId": "62CB8231CB730688E050007F010021D4", 
+// 				                    "mark": "trans_system", 
+// 				                    "exist": true, 
+// 				                    "idx": 1, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 				                {
+// 				                    "id": "62CB8231CB740688E050007F010021T2", 
+// 				                    "text": "时隙统计", 
+// 				                    "href": "/transform/CKTtimeslotStatistics", 
+// 				                    "parentId": "62CB8231CB730688E050007F010021D4", 
+// 				                    "mark": "trans_system", 
+// 				                    "exist": true, 
+// 				                    "idx": 2, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },{
+// 				                    "id": "62CB8231CB740688E050007F010021T3", 
+// 				                    "text": "端口预警统计", 
+// 				                    "href": "/transform/device2MPortWarning", 
+// 				                    "parentId": "62CB8231CB730688E050007F010021D4", 
+// 				                    "mark": "trans_system", 
+// 				                    "exist": true, 
+// 				                    "idx": 3, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },{
+// 				                    "id": "62CB8231CB740688E050007F010021T4", 
+// 				                    "text": "时隙预警统计", 
+// 				                    "href": "/transform/timeslotWarning", 
+// 				                    "parentId": "62CB8231CB730688E050007F010021D4", 
+// 				                    "mark": "trans_system", 
+// 				                    "exist": true, 
+// 				                    "idx": 4, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                }
+// 							]
+// 						},
+// 						{
+// 							"id":"62CB8231CB730688E050007F010021D9",
+// 							"text":"统计分析（处）",
+// 							"href":null,
+// 							"parentId":"4028811c41a001630141a13804970413",
+// 							"mark":"count_alysize",
+// 							"exist":true,
+// 							"idx":1,
+// 							"type":1,
+// 							"icon":null,
+// 							"children":[
+// 								{
+// 				                    "id": "62CB8231CB740688E050007F010021T0", 
+// 				                    "text": "预警阈值", 
+// 				                    "href": "/transform/thresholdSet", 
+// 				                    "parentId": "62CB8231CB730688E050007F010021D4", 
+// 				                    "mark": "trans_system", 
+// 				                    "exist": true, 
+// 				                    "idx": 0, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 				                {
+// 				                    "id": "62CB8231CB740688E050007F010021T1", 
+// 				                    "text": "网元统计", 
+// 				                    "href": "/transform/deviceStatistics", 
+// 				                    "parentId": "62CB8231CB730688E050007F010021D4", 
+// 				                    "mark": "trans_system", 
+// 				                    "exist": true, 
+// 				                    "idx": 1, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 				                {
+// 				                    "id": "62CB8231CB740688E050007F010021T2", 
+// 				                    "text": "时隙统计", 
+// 				                    "href": "/transform/timeslotStatistics", 
+// 				                    "parentId": "62CB8231CB730688E050007F010021D4", 
+// 				                    "mark": "trans_system", 
+// 				                    "exist": true, 
+// 				                    "idx": 2, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },{
+// 				                    "id": "62CB8231CB740688E050007F010021T3", 
+// 				                    "text": "端口预警统计", 
+// 				                    "href": "/transform/officeDevice2MPortWarning", 
+// 				                    "parentId": "62CB8231CB730688E050007F010021D4", 
+// 				                    "mark": "trans_system", 
+// 				                    "exist": true, 
+// 				                    "idx": 3, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },{
+// 				                    "id": "62CB8231CB740688E050007F010021T4", 
+// 				                    "text": "时隙预警统计", 
+// 				                    "href": "/transform/officeTimeslotWarning", 
+// 				                    "parentId": "62CB8231CB730688E050007F010021D4", 
+// 				                    "mark": "trans_system", 
+// 				                    "exist": true, 
+// 				                    "idx": 4, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                }
+// 							]
+// 						},
+// 						{
+// 							"id":"4028811c41a001630141a137fc3c0351",
+// 							"text":"传输资源查询",
+// 							"href":null,
+// 							"parentId":"4028811c41a001630141a13804970413",
+// 							"mark":"alarm_monitor",
+// 							"exist":true,"idx":1,
+// 							"type":1,
+// 							"icon":null,
+// 							"children":[
+// 								{
+// 				                    "id": "62CB8231CB740688E050007F010021D1", 
+// 				                    "text": "传输系统查询", 
+// 				                    "href": "/transform/resTransmission", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0351", 
+// 				                    "mark": "trans_system", 
+// 				                    "exist": true, 
+// 				                    "idx": 1, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 			                	},
+// 			                	{
+// 				                    "id": "62CB8231CB740688E050007F010021D2", 
+// 				                    "text": "网元查询", 
+// 				                    "href": "/transform/netElementQuery", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0351", 
+// 				                    "mark": "net_element", 
+// 				                    "exist": true, 
+// 				                    "idx": 2, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 				                {
+// 				                    "id": "62CB8231CB740688E050007F010121D3", 
+// 				                    "text": "电路查询", 
+// 				                    "href": "/transform/circuitQuery", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0351", 
+// 				                    "mark": "circuit_query", 
+// 				                    "exist": true, 
+// 				                    "idx": 2, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 								{
+// 				                    "id": "62CB8231CB740688E050007F010021E4", 
+// 				                    "text": "SDH光功率查询", 
+// 				                    "href": "/transform/opticalPowerSelectSDH", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0351", 
+// 				                    "mark": "tran_port", 
+// 				                    "exist": true, 
+// 				                    "idx": 2, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 								{
+// 				                    "id": "62CB8231CB740688E050007F010021E5", 
+// 				                    "text": "OTN光功率查询", 
+// 				                    "href": "/transform/opticalPowerSelectOTN", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0351", 
+// 				                    "mark": "tran_port", 
+// 				                    "exist": true, 
+// 				                    "idx": 2, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                }
+// 							]
+// 						},
+// 						{
+// 							"id":"4028811c41a001630141a137fc3c0352",
+// 							"text":"传输资源台账",
+// 							"href":null,
+// 							"parentId":"4028811c41a001630141a13804970413",
+// 							"mark":"alarm_monitor",
+// 							"exist":true,"idx":1,
+// 							"type":1,
+// 							"icon":null,
+// 							"children":[
+// 								{
+// 				                    "id": "62CB8231CB740688E050007F010021D5", 
+// 				                    "text": "端口台账", 
+// 				                    "href": "/transform/resPortLedger", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0352", 
+// 				                    "mark": "tran_port", 
+// 				                    "exist": true, 
+// 				                    "idx": 3, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                },
+// 	               				{
+// 				                    "id": "62CB8231CB740688E050007F010221D5", 
+// 				                    "text": "电路台账", 
+// 				                    "href": "/transform/resCircuitLedger", 
+// 				                    "parentId": "4028811c41a001630141a137fc3c0352", 
+// 				                    "mark": "tran_circuit", 
+// 				                    "exist": true, 
+// 				                    "idx": 4, 
+// 				                    "type": 1, 
+// 				                    "icon": "images/leftNavigator/opt_pair.png", 
+// 				                    "children": []
+// 				                }
+// 							]
+// 						},
+// 					]
+// 				}
+				
+		];
+// 		pl.load({userId : [[${userId}]]},function(r){
+			var main = new Main({
+// 				menuData : r.data,
+				menuData : staticPerData,
+				userName : [[${userName}]],
+				userPhone : [[${userPhone}]],
+				userId : [[${userId}]],
+				encryptUserId : [[${encryptUserId}]]
+			});
+			main.render();
+// 		});
+	});
+/*]]>*/
+</script>
+</body>
+</html>

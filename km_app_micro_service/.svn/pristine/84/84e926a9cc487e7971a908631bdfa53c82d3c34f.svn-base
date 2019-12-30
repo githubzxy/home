@@ -1,0 +1,19 @@
+package com.enovell.km_app_micro_service.service.uploadFileManage;
+
+import java.util.List;
+
+import org.bson.Document;
+
+public interface UploadFileManageService {
+
+	Long findAllDocumentCount(String collectionName, String orgName, String name, String startUploadDate,
+			String endUploadDate);
+
+	List<Document> findAllDocument(String collectionName, String orgName, String name, String startUploadDate,
+			String endUploadDate, int start, int limit);
+
+	void removeDocument(List<String> ids, String collectionName);
+
+	Document findDocumentById(String id, String collectionName);
+
+}

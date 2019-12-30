@@ -1,0 +1,233 @@
+/**
+ * 巡检基础数据管理新增
+ * @author zhouxingyu
+ * @date 19-10-10
+ */
+define('/basicInfomation/basicInfomationAdd',
+		['bui/common',
+		'bui/data',
+		 'common/form/FormContainer',
+		 'bui/uploader',
+		 'common/uploader/UpdateUploader',
+		 'common/data/PostLoad',
+		 'bui/tooltip'
+		 ],function(r){
+	var BUI = r('bui/common');
+	var Data = r('bui/data');
+	var	FormContainer = r('common/form/FormContainer');
+	var	Uploader = r('bui/uploader');
+	var Tooltip = r('bui/tooltip');
+	var	UpdateUploader = r('common/uploader/UpdateUploader');
+	var	PostLoad = r('common/data/PostLoad');
+	var basicInfomationAdd = BUI.Overlay.Dialog.extend({
+		/**
+		 * 初始化
+		 */
+		initializer: function(){
+			var _self = this;
+			_self.addChild(_self._initFormContainer());
+		},
+		
+		/**
+		 * 渲染
+		 */
+		renderUI: function(){
+			var _self = this;
+			   $("#formContainer #special").append("<option  value=''>请选择</option>");
+               $("#formContainer #special").append("<option  value='1'>是</option>");
+               $("#formContainer #special").append("<option  value='0'>否</option>");
+//			_self._initUploader();
+//			_self._getLines();
+//			_self._getStation();
+		},
+
+		/**
+		 * 绑定事件
+		 */
+		bindUI: function(){
+			var _self = this;
+			//隐藏本页面单选框里的第一个空白框
+//			$(".bui-stdmod-body select option[value='']").hide();
+		
+			  
+//            $("input[name='railLineDialog']").on('change',function(){
+//            	$("#machineRoomDialog").html("");
+//            	var  railLine = $("input[name='railLineDialog']").val();
+//            	_self._initMachineRoom(railLine);
+//            });
+            	//定义按键
+			var buttons = [
+				{
+					text: '保存',
+					elCls: 'button',
+					handler: function(){
+						_self._saveData();
+					}
+				},{
+					text: '关闭',
+					elCls: 'button',
+					handler: function(){
+						_self.close();
+					}
+				}
+			];
+			_self.set('buttons',buttons);
+//			//添加资料名称悬浮提示
+//    		$('#accountNameAdd').on('mouseover',function(){
+//    			var str=$('#accountNameAdd').val();
+//    			$('#accountNameAdd').attr('title',str);
+//    		});
+//    		//添加施工地点悬浮提示
+//    		$('#place').on('mouseover',function(){
+//    			var str=$('#place').val();
+//    			$('#place').attr('title',str);
+//    		});
+		},
+		
+		/**
+		 * 初始化表单
+		 */
+		_initFormContainer : function(){
+            var _self = this;
+            var colNum = 2;
+            var childs = [
+				{
+					label: '机房名称：',
+					redStarFlag: true,
+					itemColspan: 1,
+					item: '<input type="text" name="name" id="name" data-rules="{required:true,maxlength:200}"/>'
+				},{
+					label: '所属机构：',
+					itemColspan: 1,
+					item : '<input type="text" id="orgName" name="orgName" data-rules="{maxlength:200}"/>'
+				},{
+					label: '纬度：',
+					itemColspan: 1,
+					item : '<input type="text" id="latitude" name="latitude" data-rules="{maxlength:200}"/>'
+				},{
+					label: '经度：',
+					itemColspan: 1,
+					item: '<input type="text" name="longitude" id="longitude"  data-rules="{maxlength:200}"/>'
+				},{
+					label: '是否为特殊地点：',
+					itemColspan : 1,
+					item:'<select type="text" name="special" id="special" data-rules="{maxlength:200}"/>'
+				},{
+					label: '检查周期：',
+					itemColspan : 1,
+					item:'<input type="text" name="searchCycle" id="searchCycle" data-rules="{maxlength:200}"/>'
+				},{
+					label: '特殊地点需要扫码的二维码：',
+					itemColspan : 2,
+					item:'<textarea  name="code" id="code" style="width:99.5%;height:50px"/>'
+				}
+            ];
+            var form = new FormContainer({
+                id : 'fileFormAdd',
+                colNum : colNum,
+                formChildrens : childs,
+            });
+            _self.set('formContainer',form);
+            return form;
+        },
+
+		
+		 /**
+         * 获取线别
+         */
+        _getLines:function(){
+        	var _self=this;
+        	var nameData = [];
+        	$.ajax({
+        		url:'/kmms/networkManageInfoAction/getLines',
+        		type:'post',
+        		dataType:"json",
+        		success:function(res){
+        			for(var i=0;i<res.length;i++){
+        				nameData.push(res[i]);
+        			}
+        		}
+        	});
+        	
+        	var suggest = new SelectSuggest({
+                renderName: '#formContainer #railLineDialog',
+                inputName: 'railLineDialog',
+                renderData: nameData,
+                width: 222
+            });
+        	
+        },
+        
+        _getStation:function(){
+        	var _self=this;
+        	var nameData = [];
+        	$.ajax({
+        		url:'/kmms/networkManageInfoAction/getStationNoCondition',
+        		type:'post',
+        		dataType:"json",
+        		success:function(res){
+        			for(var i=0;i<res.length;i++){
+        				nameData.push(res[i]);
+        			}
+        		}
+        	});
+        	
+        	var suggest = new SelectSuggest({
+                renderName: '#formContainer #machineRoomDialog',
+                inputName: 'machineRoomDialog',
+                renderData: nameData,
+                width: 222
+            });
+        },
+        
+		
+		//保存数据
+		_saveData:function(){
+			var _self = this;
+    		var form = _self.getChild('fileFormAdd',true);
+    		//验证不通过
+    		if(!form.isValid()){
+    			return;
+    		}
+    		var data = form.serializeToObject();
+    		//获取上传文件
+//    		var uploadFile = _self._getUploadFileData();
+//    		data.uploadFile=JSON.stringify(uploadFile);
+    		data.collectionName = _self.get('collectionName');
+			data.userId = _self.get('userId');
+			data.orgId=_self.get('orgId');
+    		//提交到数据库
+    		var postLoad = new PostLoad({
+				url : '/basicInformationAction/addBasicInformationData',
+				el : _self.get('el'),
+				loadMsg : '保存中...'
+			}); 
+			postLoad.load(data, function(result){
+				if (result != null) {
+					_self.fire("completeAddSave",{
+						result : result
+					});
+				}
+			});
+		}
+	},{
+		ATTRS: {
+			id: {value : 'fileAddDialog'},
+			title: {value : '新增资料'},
+			width: {value:650},
+	        height: {value:280},
+	        contextPath: {},
+	        userId:{},
+            orgId:{},
+            collectionName: {value:'basicInformation'},
+	        closeAction: {value: 'destroy'},//关闭时销毁加载到主页面的HTML对象
+	        mask: {value: true},
+	        events: {
+	        	value: {
+	        		'completeAddSave' : true,
+	        	}
+	        }
+		}
+	});
+	return basicInfomationAdd;
+});

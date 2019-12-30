@@ -1,0 +1,46 @@
+@charset "UTF-8";
+body{
+	text-align:center;
+	overflow: hidden;
+	background-color: #DCF2FA;
+}
+.loginMain{
+	margin:0 auto;
+	background-image : url(./loginBackgroundyunwei.jpg);
+	background-repeat:no-repeat; 
+	background-size:100% 100%;
+	-moz-background-size:100% 100%;
+}
+.loginForm{
+	background-image : url(./loginImage.png);
+	float : right;
+	margin-top : 19%;
+	margin-right : 7%;
+}
+.userDiv{
+	float : right;
+	margin-top : 28%;
+}
+.passwordDiv{
+	float : right;
+	margin-top : 7%;
+}
+.checkboxDiv{
+	margin-top: 69%;
+    margin-right: 27%;
+}
+.loginButton{
+	background-image : url(./loginBtn.png);
+	background-repeat:no-repeat; 
+	margin-top: 4%;
+    margin-left: 35%;
+    cursor:pointer;
+}
+.downloadButton{
+	position : absolute;
+	background-image : url(./downBrowser.png);
+	background-repeat:no-repeat; 
+	top: 90%;
+    right: 18%;
+    cursor:pointer;
+}

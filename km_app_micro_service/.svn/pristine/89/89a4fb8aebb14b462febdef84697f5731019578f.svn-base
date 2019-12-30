@@ -1,0 +1,85 @@
+package com.enovell.km_app_micro_service.action;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.enovell.km_app_micro_service.service.LoginService;
+import com.enovell.system.common.domain.User;
+import com.enovell.yunwei.enocommon.dto.ResultMsg;
+import com.enovell.yunwei.enocommon.exceptions.BusiException;
+import com.enovell.yunwei.enocommon.utils.MD5Util;
+
+/**登录界面控制器
+ * @author RoySong
+ * @date 171017
+ */
+@Controller  
+public class LoginAction {
+	
+	@Resource(name="LoginService")
+	private LoginService loginService;
+	
+	@RequestMapping(value = "/")
+	public String index(HttpServletRequest request) {
+		Object user = request.getSession().getAttribute("user");
+		if(user == null)
+			return "login";
+		User u = (User)user;
+		request.setAttribute("userName", u.getName());
+		request.setAttribute("userId", u.getId());
+		request.getSession().setAttribute("userId",u.getId());
+		request.setAttribute("userPhone", u.getPhone());
+		return "main";
+	}
+	
+	@RequestMapping(value = "/login",method = RequestMethod.POST)
+	@ResponseBody
+	public ResultMsg login(@RequestParam String userName,
+			@RequestParam String password,
+			HttpServletRequest request) {
+//		try {
+//			User user = loginService.getUser(userName,MD5Util.toMD5(password));
+//			request.getSession().setAttribute("user", user);
+//			return ResultMsg.getSuccess();
+//		}
+//		catch(EmptyResultDataAccessException e) {
+//			return ResultMsg.getFailure("没找到对应用户，请重新输入用户名！");
+//		}
+//		catch (BusiException e) {
+//			return ResultMsg.getFailure(e.getMessage());
+//		}
+//		catch (Exception e) {
+//			e.printStackTrace();
+//			return ResultMsg.getFailure("系统错误，请联系管理员！");
+//		}
+		try {
+			User user = loginService.getUser(userName,password);
+			request.getSession().setAttribute("user", user);
+			return ResultMsg.getSuccess();
+		}
+		catch(EmptyResultDataAccessException e) {
+			return ResultMsg.getFailure("没找到对应用户，请重新输入用户名！");
+		}
+		catch (BusiException e) {
+			return ResultMsg.getFailure(e.getMessage());
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return ResultMsg.getFailure("系统错误，请联系管理员！");
+		}
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		request.getSession().removeAttribute("user");
+		request.getSession().removeAttribute("userId");
+		return "login";
+	}
+}

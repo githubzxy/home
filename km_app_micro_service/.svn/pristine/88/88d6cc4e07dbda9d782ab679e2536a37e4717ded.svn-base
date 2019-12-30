@@ -1,0 +1,83 @@
+package com.enovell.km_app_micro_service.action;
+
+import org.bson.Document;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * km_app_server
+ * 巡检记录Action
+ * @author bili
+ * @date 2019/7/23
+ */
+@RestController
+public class RecordAction {
+    @Value("${user.uploadPath}")
+    String uploadPath;
+    @Value("${spring.data.mongodb.host}")
+    private String mongoHost;
+    @Value("${spring.data.mongodb.port}")
+    private int mongoPort;
+    @Value("${spring.data.mongodb.database}")
+    private String mongoDatabase;
+    @PostMapping("/upload")
+    @CrossOrigin
+    public Map<String,String> upload(@RequestParam(value = "files",required = false) MultipartFile[] multipartFiles,
+                         @RequestParam(value = "dateStr") String dateStr,
+                         @RequestParam("id") String addrId,
+                         @RequestParam(value="remark" ,required = false)String remark,
+                         @RequestParam(value="userName" ,required = false)String userName){
+        System.out.println("dateStr = [" + dateStr + "], addrId = [" + addrId + "], userName = [" + userName + "], remark = [" + remark + "]");
+        Document document = new Document();
+        for (MultipartFile file : multipartFiles) {
+            System.out.println("file = " + file.getOriginalFilename());
+            System.out.println("file = " + file.getSize()/1024+"kb");
+            String[] tempName = file.getOriginalFilename().split("\\.");
+            String postfix = tempName[tempName.length-1].toLowerCase();
+            String fileName = System.currentTimeMillis()+"."+postfix;
+            String savePath = uploadPath+fileName;
+            System.out.println("savePath = " + savePath);
+            document.put("savePath", savePath);//上传文件存放路径
+            try {
+                file.transferTo(new File(savePath));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date currentDate = new Date();
+        String currentDateStr = "";
+        currentDateStr = sdf.format(currentDate);
+        
+        document.put("createDate", currentDateStr);//上传时间（不展示仅记录作为展示排序依据）
+        document.put("dateStr", dateStr);//巡检打卡时间
+        document.put("addrId", addrId);//打卡地点的标识（根据值可以在基础数据中获取打卡地点名称和所属机构）
+        document.put("userName", userName);//填写的打卡人员名称
+        document.put("remark", remark);//填写的备注
+        document.put("status", 1);
+        
+        try(MongoClient mc = new MongoClient(mongoHost,mongoPort)){
+            MongoDatabase md = mc.getDatabase(mongoDatabase);
+            md.getCollection("uploadFileManage").insertOne(document);
+        }
+        
+        Map<String,String> res = new HashMap<>();
+        res.put("msg","上传完成");
+        return res;
+    }
+}

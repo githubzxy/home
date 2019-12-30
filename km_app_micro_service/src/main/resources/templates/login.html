@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>登录</title>
+<link rel="stylesheet" th:href="@{/bui/css/bs3/dpl-min.css}" />
+<link rel="stylesheet" th:href="@{/bui/css/bs3/bui-min.css}" />
+<link rel="stylesheet" th:href="@{/login/login.css}" />
+<script charset="utf-8" th:src="@{/common/sq.js}"></script>
+</head>
+<body>
+<script th:inline="javascript">
+	seajs.config({
+		paths : {
+			common : "/common",
+			kmmsApp : "/kmmsApp",
+			bui : "/bui"
+		}
+	})
+	seajs.use('/login/login',function(Login){
+		var login = new Login();
+		login.render();
+	})
+</script>
+</body>
+</html>

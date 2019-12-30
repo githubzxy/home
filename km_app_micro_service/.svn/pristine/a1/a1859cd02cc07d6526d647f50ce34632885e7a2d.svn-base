@@ -1,0 +1,142 @@
+/**
+ * 机房技术资料及台账详情
+ * @author zhouxingyu
+ * @date 19-3-27
+ */
+define('/uploadFileManage/uploadFileManageDetail', [
+    'bui/overlay', 'common/uploader/ViewUploader',
+    'common/form/FormContainer',
+    'common/data/PostLoad'
+], function(r) {
+    var Overlay = r('bui/overlay'),
+        ViewUploader = r('common/uploader/ViewUploader'),
+        PostLoad = r('common/data/PostLoad'),
+        FormContainer = r('common/form/FormContainer');
+    var TechnicalAccountPageNewDetails = Overlay.Dialog.extend({
+        initializer: function() {
+            var _self = this;
+            _self.addChild(_self._initFormContainer());
+        },
+        renderUI: function() {
+            var _self = this;
+            //显示数据
+            _self._getShowData();
+        },
+        bindUI: function() {
+            var _self = this;
+           
+            //定义按键
+            var buttons = [{
+                text: '关闭',
+                elCls: 'button',
+                handler: function() {
+                    if (this.onCancel() !== false) {
+                        this.close();
+                    }
+                }
+            }];
+            _self.set('buttons', buttons);
+        },
+        /**
+         * 获取显示数据
+         */
+        _getShowData: function() {
+            var _self = this,
+                shiftId = _self.get('shiftId'),
+                form = _self.get("formContainer");
+            $.ajax({
+                url: '/uploadFileManageAction/findById',
+                data: { id: shiftId, collectionName: _self.get('collectionName') },
+                type: 'post',
+                dataType: "json",
+                success: function(reslut) {
+                	var data = reslut.data;
+                    if (data) {
+                    	$("#formContainer #dateStr").val(data.dateStr);
+                    	$("#formContainer #userName").val(data.userName);
+                    	$("#formContainer #name").val(data.name);
+                        $("#formContainer #orgName").val(data.orgName);
+                        $("#formContainer #searchCycle").val(data.searchCycle);
+                        $("#formContainer #remark").val(data.remark);
+                        var html = '<a href='+data.savePath+' target="_blank">查看</a>'
+                        $("#formContainer #savePath").html(html);
+                    }
+                }
+            });
+        },
+        /**
+         * 初始化上传文件（仅用于查看）
+         */
+        _initViewUploader: function(uploadFiles) {
+            var _self = this;
+            var viewFiles = new ViewUploader({
+                render: '#formContainer #uploadFile',
+                alreadyItems: uploadFiles,
+                previewOnline: true
+            });
+            viewFiles.render();
+        },
+        /**
+         * 初始化FormContainer
+         */
+        _initFormContainer: function() {
+            var _self = this;
+            var colNum = 2;
+            var childs = [
+				{
+					label: '巡检日期：',
+					redStarFlag: true,
+					itemColspan: 1,
+					item: '<input type="text" name="dateStr" id="dateStr" data-rules="{required:true,maxlength:200}" readonly/>'
+				},{
+					label: '巡检人员：',
+					itemColspan: 1,
+					item : '<input type="text" id="userName" name="userName" data-rules="{maxlength:200}" readonly/>'
+				},{
+					label: '巡检地点：',
+					itemColspan: 1,
+					item : '<input type="text" id="name" name="name" data-rules="{maxlength:200}" readonly/>'
+				},{
+					label: '所属机构 ：',
+					itemColspan: 1,
+					item: '<input type="text" name="orgName" id="orgName" data-rules="{maxlength:200}" readonly/>'
+				},{
+					label: '检查周期：',
+					itemColspan : 1,
+					item:'<select type="text" name="searchCycle" id="searchCycle" data-rules="{maxlength:200}" readonly/>'
+				},{
+					label: '备注：',
+					itemColspan : 1,
+					item:'<input type="text" name="remark" id="remark" data-rules="{maxlength:200}" readonly/>'
+				},{
+					label: '资料：',
+					itemColspan : 2,
+					item:'<div id="savePath"></div>'
+				}
+            ];
+            var form = new FormContainer({
+                id: 'technicalDocumentShow',
+                colNum: colNum,
+                formChildrens: childs,
+//                elStyle: { overflowY: 'scroll'}
+            });
+            _self.set('formContainer', form);
+            return form;
+        },
+
+    }, {
+        ATTRS: {
+            id: { value: 'technicalDocumentInfoDialog' },
+            title: { value: '资料 详细信息' },
+            width: { value: 650 },
+            height: { value: 280 },
+            contextPath: {},
+            shiftId: {},
+            closeAction: { value: 'destroy' }, //关闭时销毁加载到主页面的HTML对象
+            mask: { value: true },
+            collectionName: {},
+            userId: {},
+        }
+    });
+    return TechnicalAccountPageNewDetails;
+});

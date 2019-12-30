@@ -1,0 +1,147 @@
+/**
+ * 机房技术资料及台账详情
+ * @author zhouxingyu
+ * @date 19-3-27
+ */
+define('/basicInfomation/basicInfomationDetail', [
+    'bui/overlay', 'common/uploader/ViewUploader',
+    'common/form/FormContainer',
+    'common/data/PostLoad'
+], function(r) {
+    var Overlay = r('bui/overlay'),
+        ViewUploader = r('common/uploader/ViewUploader'),
+        PostLoad = r('common/data/PostLoad'),
+        FormContainer = r('common/form/FormContainer');
+    var TechnicalAccountPageNewDetails = Overlay.Dialog.extend({
+        initializer: function() {
+            var _self = this;
+            _self.addChild(_self._initFormContainer());
+        },
+        renderUI: function() {
+            var _self = this;
+            $("#formContainer #special").append("<option  value=''>请选择</option>");
+            $("#formContainer #special").append("<option  value='1'>是</option>");
+            $("#formContainer #special").append("<option  value='0'>否</option>");
+            //显示数据
+            _self._getShowData();
+        },
+        bindUI: function() {
+            var _self = this;
+           
+            //定义按键
+            var buttons = [{
+                text: '关闭',
+                elCls: 'button',
+                handler: function() {
+                    if (this.onCancel() !== false) {
+                        this.close();
+                    }
+                }
+            }];
+            _self.set('buttons', buttons);
+        },
+        /**
+         * 获取显示数据
+         */
+        _getShowData: function() {
+            var _self = this,
+                shiftId = _self.get('shiftId'),
+                form = _self.get("formContainer");
+            $.ajax({
+                url: '/basicInformationAction/findById',
+                data: { id: shiftId, collectionName: _self.get('collectionName') },
+                type: 'post',
+                dataType: "json",
+                success: function(reslut) {
+                	var data = reslut.data;
+                    if (data) {
+                        $("#formContainer #name").val(data.name);
+                        $("#formContainer #orgName").val(data.orgName);
+                        $("#formContainer #latitude").val(data.latitude);
+                        $("#formContainer #longitude").val(data.longitude);
+                        if(data.special==0){
+                        	$("#formContainer #special").val("否");
+                        }else{
+                        	$("#formContainer #special").val("是");
+                        }
+                        $("#formContainer #code").val(data.code);
+                        $("#formContainer #searchCycle").val(data.searchCycle);
+                    }
+                }
+            });
+        },
+        /**
+         * 初始化上传文件（仅用于查看）
+         */
+        _initViewUploader: function(uploadFiles) {
+            var _self = this;
+            var viewFiles = new ViewUploader({
+                render: '#formContainer #uploadFile',
+                alreadyItems: uploadFiles,
+                previewOnline: true
+            });
+            viewFiles.render();
+        },
+        /**
+         * 初始化FormContainer
+         */
+        _initFormContainer: function() {
+            var _self = this;
+            var colNum = 2;
+            var childs = [
+				{
+					label: '机房名称：',
+					itemColspan: 1,
+					item: '<input type="text" name="name" id="name" readonly data-rules="{required:true,maxlength:200}"/>'
+				},{
+					label: '所属机构：',
+					itemColspan: 1,
+					item : '<input type="text" id="orgName" name="orgName" readonly data-rules="{maxlength:200}"/>'
+				},{
+					label: '纬度：',
+					itemColspan: 1,
+					item : '<input type="text" id="latitude" name="latitude" readonly data-rules="{maxlength:200}"/>'
+				},{
+					label: '经度：',
+					itemColspan: 1,
+					item: '<input type="text" name="longitude" id="longitude" readonly data-rules="{maxlength:200}"/>'
+				},{
+					label: '是否为特殊地点：',
+					itemColspan : 1,
+					item:'<input type="text" name="special" id="special" readonly data-rules="{maxlength:200}"/>'
+				},{
+					label: '巡检周期：',
+					itemColspan : 1,
+					item:'<input type="text" name="searchCycle" id="searchCycle" readonly data-rules="{maxlength:200}"/>'
+				},{
+					label: '特殊地点需要扫码的二维码：',
+					itemColspan : 2,
+					item:'<textarea type="text" name="code" id="code" readonly data-rules="{maxlength:200}"/>'
+				}
+            ];
+            var form = new FormContainer({
+                id: 'technicalDocumentShow',
+                colNum: colNum,
+                formChildrens: childs,
+//                elStyle: { overflowY: 'scroll'}
+            });
+            _self.set('formContainer', form);
+            return form;
+        },
+
+    }, {
+        ATTRS: {
+            id: { value: 'technicalDocumentInfoDialog' },
+            title: { value: '资料 详细信息' },
+            width: { value: 650 },
+            height: { value: 280 },
+            contextPath: {},
+            shiftId: {},
+            closeAction: { value: 'destroy' }, //关闭时销毁加载到主页面的HTML对象
+            mask: { value: true },
+            collectionName: {},
+            userId: {},
+        }
+    });
+    return TechnicalAccountPageNewDetails;
+});

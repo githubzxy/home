@@ -1,0 +1,108 @@
+package com.enovell.km_app_micro_service.action;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.bson.Document;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.enovell.km_app_micro_service.service.uploadFileManage.UploadFileManageService;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+
+/**
+ * km_app_server
+ * 巡检记录Action
+ * @author bili
+ * @date 2019/7/23
+ */
+@RestController
+public class RecordAction {
+    @Value("${user.uploadPath}")
+    String uploadPath;
+    @Value("${spring.data.mongodb.host}")
+    private String mongoHost;
+    @Value("${spring.data.mongodb.port}")
+    private int mongoPort;
+    @Value("${spring.data.mongodb.database}")
+    private String mongoDatabase;
+    @Resource(name = "uploadFileManageService")
+	private UploadFileManageService service;
+    @PostMapping("/upload")
+    @CrossOrigin
+    public Map<String,String> upload(@RequestParam(value = "files",required = false) MultipartFile[] multipartFiles,
+                         @RequestParam(value = "dateStr") String dateStr,
+                         @RequestParam("id") String addrId,
+                         @RequestParam(value="remark" ,required = false)String remark,
+                         @RequestParam(value="userName" ,required = false)String userName){
+        System.out.println("dateStr = [" + dateStr + "], addrId = [" + addrId + "], userName = [" + userName + "], remark = [" + remark + "]");
+        Document document = new Document();
+        List<Map<String,String>> uploadFile = new ArrayList<Map<String,String>>();
+        for (MultipartFile file : multipartFiles) {
+            System.out.println("file = " + file.getOriginalFilename());
+            System.out.println("file = " + file.getSize()/1024+"kb");
+            String[] tempName = file.getOriginalFilename().split("\\.");
+            String postfix = tempName[tempName.length-1].toLowerCase();
+            String fileName = System.currentTimeMillis()+"."+postfix;
+            String savePath = uploadPath+fileName;
+            System.out.println("savePath = " + savePath);
+            Map<String,String> f = new HashMap<String,String>();
+            f.put("name",fileName);
+            f.put("path",savePath);
+            uploadFile.add(f);
+            try {
+                file.transferTo(new File(savePath));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        Document result = service.checkDocument(dateStr, addrId, "uploadFileManage");
+        
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date currentDate = new Date();
+        String currentDateStr = "";
+        currentDateStr = sdf.format(currentDate);
+        
+        document.put("createDate", currentDateStr);//上传时间（不展示仅记录作为展示排序依据）
+        document.put("dateStr", dateStr);//巡检打卡时间
+        document.put("addrId", addrId);//打卡地点的标识（根据值可以在基础数据中获取打卡地点名称和所属机构）
+        document.put("userName", userName);//填写的打卡人员名称
+        document.put("uploadFileArr", uploadFile);//上传文件存放路径
+        document.put("remark", remark);//填写的备注
+        document.put("status", 1);
+        
+        
+        if(result!=null){
+        	System.out.println(result);
+        	try(MongoClient mc = new MongoClient(mongoHost,mongoPort)){
+                MongoDatabase md = mc.getDatabase(mongoDatabase);
+                md.getCollection("uploadFileManage").findOneAndUpdate(Filters.eq("_id", result.getObjectId("_id")),new Document("$set",document));
+            }
+        }else{
+        	try(MongoClient mc = new MongoClient(mongoHost,mongoPort)){
+                MongoDatabase md = mc.getDatabase(mongoDatabase);
+                md.getCollection("uploadFileManage").insertOne(document);
+            }
+        }
+        
+        Map<String,String> res = new HashMap<>();
+        res.put("msg","上传完成");
+        return res;
+    }
+}
