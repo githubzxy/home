@@ -1,0 +1,1 @@
+define("common/uploader/ViewQueue",["bui/uploader"],function(r){var Uploader=r("bui/uploader");Uploader.Theme;return Uploader.Queue.extend({},{ATTRS:{}})});

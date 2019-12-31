@@ -1,0 +1,72 @@
+/*
+* 特别注意：table中如何包含文本框，文本域等表单控件，请参考“tr中包含文本框和文本域的内边距”
+*/
+@CHARSET "UTF-8";
+
+.popUpTable {
+	margin: 0px;
+	border: 1px solid #dddddd;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+}
+
+.popUpTable th {
+	border: 1px solid #dddddd;
+	padding: 9px;
+ 	background-color: #EFF3FF;
+ 	text-align:center;
+ 	vertical-align:middle;
+ 	width: 83px;
+}
+	
+ .popUpTable td {
+	border: 1px solid #dddddd;
+	padding: 9px;
+  	vertical-align:middle;
+	min-width:207px;
+}
+
+/*
+* 设置表格中的文本框和文本域的边框为0
+*/
+.popUpTable input[type="text"],  .popUpTable input[type="password"],  .popUpTable textarea,  .popUpTable select {
+   	border: 0px;
+}
+
+/*
+* tr中包含文本框和文本域的内边距
+* 使用方式：<tr class="thTdPadding">
+*/
+ .thTdPadding th, .thTdPadding td {
+ 	padding:0px;
+ }
+
+/*
+* 表单验证样式（因为border: 0px覆盖了bui.css中的样式）
+*/
+.popUpTable input.bui-form-field-error, .popUpTable textarea.bui-form-field-error,.popUpTable  .bui-form-field-error input[type="text"] {
+	border: 1px dotted red;
+}
+
+/*
+* 为表单验证“！”悬浮到表单控件上提供绝对定位
+* 使用方式：
+* <div>
+*	  <input type="text" id="replyDate" data-rules="{required:true}" style="width:96%;height:30px;" />
+* </div>
+*/
+.popUpTable td div {
+	position:relative;
+}
+
+/*
+* 表单验证“！”悬浮到表单控件上（水平居右，垂直居中）
+*/
+.x-icon-error {
+	position: absolute;
+	right:0px;
+	top: 50%;
+	margin-top:-7px;
+}
+	

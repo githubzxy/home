@@ -1,0 +1,57 @@
+/**   
+ * Copyright © 2019 eSunny Info. Tech Ltd. All rights reserved.
+ *
+ * @Package: com.enovell.yunwei.system.util 
+ * @author: lidt   
+ * @date: 2019年5月30日 上午10:35:19 
+ */
+package com.enovell.yunwei.system.util;
+
+import java.net.URLDecoder;
+import java.util.Base64;
+
+/**   
+ *    
+  *  项目名称：RINMS2MAIN_ES   
+  *  类名称：DecryptUtil   
+  *  类描述：   登录密码解密
+  *  创建人：zhouxy
+  *  创建时间：2019年5月30日 上午10:35:19
+ *    
+ */
+public class DecryptUtil {
+
+	/***
+     * Base64加密
+     * @param str 需要加密的参数
+     * @return
+     * @throws Exception
+     */
+    public static String encrypt_Base64(String str) throws Exception {
+        String result = Base64.getEncoder().encodeToString(str.getBytes("UTF-8"));
+        return result;
+    }
+
+    /***
+     * Base64解密
+     * @param str 需要解密的参数
+     * @return
+     * @throws Exception
+     */
+    public static String decrypt_Base64(String str) throws Exception {
+    	
+        byte[] asBytes = Base64.getDecoder().decode(str);
+        String result = new String(asBytes,"UTF-8");
+        result = URLDecoder.decode(result, "UTF-8");
+        return result;
+    }
+	
+	public static void main(String[] args) {
+		try {
+			System.out.println(decrypt_Base64("QUFiYjEyMzEyMygqJTI2JTVFJTI1JTI0JUU1JUJDJUEwJUU0JUI4JTg5JUU2JTlEJThFJUU1JTlCJTlCJUU2JTg4JTkxJUU4JTgwJUIzJUU2JTlDJUJBJUU1JTkzJUE2JUU4JUI0JUE3JUU2JTk0JUI2JUU1JTg4JUIwJUU0JUJBJTg2JUU1JUFFJUEyJUU2JTg4JUI3JUU1JUIwJUIxJUU0JUI4JTg5JUU1JUE0JUE3JUU4JTgwJTgxJUU1JUFFJUEyJUU2JTg4JUI3JUU1JUIwJUIxJUU2JTk4JUFGJUU3JTlBJTg0"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+}

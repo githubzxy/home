@@ -1,0 +1,235 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>备品备件使用情况</title>
+<link href="<%=contextPath%>/resource/css/innerRequest/popUpTable.css" rel="stylesheet" />
+<style>
+	#gridDetailIn .bui-grid-row{
+ 		height: 29px;
+ 	}
+	#gridDetailOut .bui-grid-row{
+ 		height: 29px;
+ 	}
+</style>
+</head>
+<body>
+	<div id="topButton">
+		<div id="topBar" style=" float:left; margin-top:10px; display:inline-block;"></div>
+		<div style="float:left; margin-top:10px; margin-left:4px;">
+			<li class="bui-bar-item-separator bui-bar-item bui-inline-block" ></li>
+			<button class="button button-small" type="button" id="exportXls" >导出EXCEL</button>
+			<span id="warning" style="color:red;"></span>
+		</div>
+	</div>
+	<div id="gridDetailIn"></div>
+	<div id="gridDetailOut" style="display:none;"></div>
+	
+	<form action="/kunmingrinms/spareUseStockAction/expSpareUseStock.cn" id="exportFormUse" method="post">
+		<input type="hidden" id="exportXlsJsonUse" name="exportXlsJson">
+	</form>
+	
+<script type="text/javascript">
+var contextPath = '<%=contextPath%>' + '/';
+var id= '${param.id}';
+var barDetail;//顶部按钮
+
+var storeDetailIn;//入库使用记录数据
+var storeDetailOut;//出库使用记录数据
+var gridDetailIn;
+var gridDetailOut;
+var btnId='in';//当前页面类型（入库记录或出口记录）,默认为入库
+
+var dialogHeight=useSituationDialog.get('height');//弹出框高度
+var topButtonHeight=$("#topButton").height();//顶部按钮高度
+
+BUI.use(["bui/grid","bui/data", 'bui/form','bui/toolbar'],
+									function(Grid,Data, Form,Toolbar){
+	
+	/*导出当前页数据*/
+	$("#exportXls").on("click",function(){
+		var records;
+		  if(btnId=='in'){
+				records = storeDetailIn.getResult();
+	      }else{
+	    		records = storeDetailOut.getResult();
+	      }
+		  if(records.length>0){
+			  exportSpareUseStockXls(records);
+		  }else{
+			  $("#warning").text("无数据可以导出！");
+		  }
+		  
+	});
+	
+	 barDetail = new Toolbar.Bar({
+         elCls : 'button-group',
+         itemStatusCls  : {
+             selected : 'active' //选中时应用的样式
+         },
+         defaultChildCfg : {
+           elCls : 'button button-small',
+           selectable : true //允许选中
+         },
+         children : [
+           {content : '入库记录',id:'in', selected : true},
+           {content : '出库记录',id:'out'}
+         ],
+         render : '#topBar'
+      });
+	 barDetail.render();
+	 
+	 barDetail.on('itemclick',function(ev){
+//          alert(ev.item.get('id') + ':' + ev.item.get('content'));
+       	btnId=ev.item.get('id');
+        //其他地方可以通过如下方式获取
+//         var btnId=barDetail.getSelected().get('id');
+//         var btnContent=barDetail.getSelected().get('content');
+//         alert(btnId+","+btnContent);
+         if(btnId=='in'){
+        	 $("#gridDetailOut").hide();
+        	 $("#gridDetailIn").show();
+        	 storeDetailIn.load();
+        	 gridDetailIn.set('height',dialogHeight-topButtonHeight-64);
+         }else{
+        	 $("#gridDetailIn").hide();
+        	 $("#gridDetailOut").show();
+        	 storeDetailOut.load();
+        	 gridDetailOut.set('height',dialogHeight-topButtonHeight-64);//不设置显示不正常
+         }
+       });
+	  
+	 /*入库记录开始*/    
+	 var columnsDetailIn = [{
+		title:'入库时间',
+		dataIndex:'date',
+		elCls : 'center',
+		width:'20%'
+	},{
+		title:'入库人',
+		dataIndex:'user',
+		elCls : 'center',
+		width:'20%'
+	},{
+		title:'入库数量',
+		dataIndex:'amount',
+		elCls : 'center',
+		width:'20%'
+	},{
+		title:'使用详情',
+		dataIndex:'reason',
+		elCls : 'center',
+		width:'40%'
+	}];
+	
+	storeDetailIn = new Data.Store({
+		url : contextPath+'spareUseStockAction/getSpareUseStock.cn',
+		params : {         //设置请求时的参数
+			sparePartId:id,
+			state:'1'//入库状态
+			},
+		proxy : {
+			method : 'post',
+			dataType : 'json'
+		},
+		autoLoad : true,
+		pageSize : 10
+	});
+	
+	//表格设置
+	gridDetailIn = new Grid.Grid({
+		render : '#gridDetailIn',
+		width : '100%',//如果表格使用百分比，这个属性一定要设置
+		columns : columnsDetailIn,
+		bbar : {pagingBar : true},
+		plugins : [Grid.Plugins.RowNumber],
+		store : storeDetailIn
+	});
+	gridDetailIn.render();
+	/*入库记录结束*/
+	
+	/*出库记录开始*/
+	var columnsDetailOut = [{
+		title:'出库时间',
+		dataIndex:'date',
+		elCls : 'center',
+		width:'20%'
+	},{
+		title:'出库人',
+		dataIndex:'user',
+		elCls : 'center',
+		width:'20%'
+	},{
+		title:'出库数量',
+		dataIndex:'amount',
+		elCls : 'center',
+		width:'20%'
+	},{
+		title:'使用详情',
+		dataIndex:'reason',
+		elCls : 'center',
+		width:'40%'
+	}];
+	
+	storeDetailOut = new Data.Store({
+		url : contextPath+'spareUseStockAction/getSpareUseStock.cn',
+		params : {         //设置请求时的参数
+			sparePartId:id,
+			state:'2'//出库状态
+		    },
+// 		autoLoad : true,
+		proxy : {
+			method : 'post',
+			dataType : 'json'
+		},
+		pageSize : 10
+	});
+	
+	//表格设置
+	gridDetailOut = new Grid.Grid({
+		render : '#gridDetailOut',
+		width : '100%',//如果表格使用百分比，这个属性一定要设置
+		columns : columnsDetailOut,
+		bbar : {pagingBar : true},
+		plugins : [Grid.Plugins.RowNumber],
+		store : storeDetailOut
+	});
+	gridDetailOut.render();
+	
+	/*出库记录结束*/
+	
+	//导出本页数据
+	function exportSpareUseStockXls(records){
+		$("#exportXlsJsonUse").val("");//清空值
+		var json = '[';
+		for(var i = 0 ; i < records.length ; i++){
+			var row = records[i];
+			json += '{'
+				+'"date":'+'"'+Grid.Format.datetimeRenderer(row.date)+'",'
+				+'"user":'+'"'+row.user+'",'
+				+'"amount":'+'"'+row.amount+'",'
+				+'"reason":'+'"'+row.reason+'",'
+				+'"state":'+'"'+row.state+'"'//用于后台判断
+				+'},';
+		}
+		if(records.length>0){
+			json = json.substring(0, json.length - 1);
+		}
+		json += ']';
+//			console.log(json);
+		$("#exportXlsJsonUse").val(json);
+		$("#exportFormUse").submit();
+	}
+	//设置默认初始化的表格高度
+	gridDetailIn.set('height',dialogHeight-topButtonHeight-64);
+});
+
+
+</script>
+</body>
+</html>

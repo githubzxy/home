@@ -1,0 +1,727 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 12">
+<link rel=File-List href="CIR故障统计分析_2012_2%20(7).files/filelist.xml">
+<style id="CIR故障统计分析_2012_2 (7)_3840_Styles">
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+.font53840
+	{color:windowtext;
+	font-size:9.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.xl153840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl653840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl663840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl673840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:none;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl683840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl693840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl703840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:16.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl713840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:right;
+	vertical-align:middle;
+	border-top:none;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl723840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:left;
+	vertical-align:middle;
+	border-top:none;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl733840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:none;
+	border-left:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl743840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:none;
+	border-left:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl753840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid black;
+	border-left:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl763840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:none;
+	border-left:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl773840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:none;
+	border-left:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl783840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid black;
+	border-left:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl793840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl803840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl813840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl823840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl833840
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:"\@";
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+ruby
+	{ruby-align:left;}
+rt
+	{color:windowtext;
+	font-size:9.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-char-type:none;}
+-->
+</style>
+</head>
+
+<body>
+<!--[if !excel]>　　<![endif]-->
+<!--下列信息由 Microsoft Office Excel 的“发布为网页”向导生成。-->
+<!--如果同一条目从 Excel 中重新发布，则所有位于 DIV 标记之间的信息均将被替换。-->
+<!----------------------------->
+<!--“从 EXCEL 发布网页”向导开始-->
+<!----------------------------->
+
+<div id="CIR故障统计分析_2012_2 (7)_3840" align=center x:publishsource="Excel"><!--下列信息由 Microsoft Office Excel 的“发布为网页”向导生成。--><!--如果同一条目从 Excel 中重新发布，则所有位于 DIV 标记之间的信息均将被替换。--><!-----------------------------><!--“从 EXCEL 发布网页”向导开始--><!----------------------------->
+
+<table border=0 cellpadding=0 cellspacing=0 width=1271 style='border-collapse:
+ collapse;table-layout:fixed;width:957pt'>
+ <col class=xl653840 width=49 style='mso-width-source:userset;mso-width-alt:
+ 1568;width:37pt'>
+ <col class=xl653840 width=120 style='mso-width-source:userset;mso-width-alt:
+ 3840;width:90pt'>
+ <col class=xl653840 width=49 span=3 style='mso-width-source:userset;
+ mso-width-alt:1568;width:37pt'>
+ <col class=xl653840 width=139 style='mso-width-source:userset;mso-width-alt:
+ 4448;width:104pt'>
+ <col class=xl653840 width=37 span=11 style='mso-width-source:userset;
+ mso-width-alt:1184;width:28pt'>
+ <col class=xl653840 width=180 style='mso-width-source:userset;mso-width-alt:
+ 5760;width:135pt'>
+ <col class=xl663840 width=101 style='mso-width-source:userset;mso-width-alt:
+ 3232;width:76pt'>
+ <col width=128 style='mso-width-source:userset;mso-width-alt:4096;width:96pt'>
+ <tr height=20 style='mso-height-source:userset;height:15.0pt'>
+  <td height=20 class=xl653840 width=49 style='height:15.0pt;width:37pt'></td>
+  <td class=xl653840 width=120 style='width:90pt'></td>
+  <td class=xl653840 width=49 style='width:37pt'></td>
+  <td class=xl653840 width=49 style='width:37pt'></td>
+  <td class=xl653840 width=49 style='width:37pt'></td>
+  <td class=xl653840 width=139 style='width:104pt'></td>
+  <td class=xl653840 width=37 style='width:28pt'></td>
+  <td class=xl653840 width=37 style='width:28pt'></td>
+  <td class=xl653840 width=37 style='width:28pt'></td>
+  <td class=xl653840 width=37 style='width:28pt'></td>
+  <td class=xl653840 width=37 style='width:28pt'></td>
+  <td class=xl653840 width=37 style='width:28pt'></td>
+  <td class=xl653840 width=37 style='width:28pt'></td>
+  <td class=xl653840 width=37 style='width:28pt'></td>
+  <td class=xl653840 width=37 style='width:28pt'></td>
+  <td class=xl653840 width=37 style='width:28pt'></td>
+  <td class=xl653840 width=37 style='width:28pt'></td>
+  <td class=xl653840 width=180 style='width:135pt'></td>
+  <td class=xl653840 width=101 style='width:76pt'></td>
+  <td class=xl153840 width=128 style='width:96pt'></td>
+ </tr>
+ <tr height=29 style='mso-height-source:userset;height:21.95pt'>
+  <td colspan=20 height=29 class=xl703840 style='height:21.95pt'>CIR故障统计分析</td>
+  <td class=xl153840></td>
+ </tr>
+ <tr height=40 style='mso-height-source:userset;height:30.0pt'>
+  <td colspan=2 height=40 class=xl713840 style='height:30.0pt'>填报单位：</td>
+  <td colspan=18 class=xl723840 width=1102 style='width:830pt'>${belongDepart}</td>
+ </tr>
+ <tr height=20 style='mso-height-source:userset;height:15.0pt'>
+  <td rowspan=3 height=60 class=xl743840 width=49 style='border-bottom:.5pt solid black;
+  height:45.0pt;border-top:none;width:37pt'>序号</td>
+  <td rowspan=3 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>日期</td>
+  <td rowspan=3 class=xl743840 width=49 style='border-bottom:.5pt solid black;
+  border-top:none;width:37pt'>机车型号</td>
+  <td rowspan=3 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>机车号</td>
+  <td rowspan=3 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>类型</td>
+  <td rowspan=3 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>司机报故障现象</td>
+  <td colspan=11 class=xl803840 style='border-right:.5pt solid black;
+  border-left:none'>原因分析及处理结果</td>
+  <td rowspan=3 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>测试检修处理记录</td>
+  <td rowspan=3 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>备注</td>
+  <td rowspan=3 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>所属车间</td>
+ </tr>
+ <tr height=20 style='mso-height-source:userset;height:15.0pt'>
+  <td rowspan=2 height=40 class=xl773840 style='border-bottom:.5pt solid black;
+  height:30.0pt;border-top:none'>A架</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>B架</td>
+  <td class=xl673840 width=37 style='width:28pt'>电台</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>MMI</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>话筒</td>
+  <td class=xl673840 width=37 style='width:28pt'>控制</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>天线</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>喇叭</td>
+  <td class=xl673840 width=37 style='width:28pt'>打印</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>其它</td>
+  <td class=xl673840 width=37 style='width:28pt'>试验</td>
+ </tr>
+ <tr height=20 style='mso-height-source:userset;height:15.0pt'>
+  <td height=20 class=xl683840 width=37 style='height:15.0pt;width:28pt'>主机</td>
+  <td class=xl683840 width=37 style='width:28pt'>电缆</td>
+  <td class=xl683840 width=37 style='width:28pt'>机</td>
+  <td class=xl683840 width=37 style='width:28pt'>良好</td>
+ </tr>
+ <#if result?? && (result?size = 0) >
+ <tr height=20 style='mso-height-source:userset;height:15.0pt'>
+  <td height=20 class=xl693840 style='height:15.0pt'>1</td>
+  <td class=xl833840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+ </tr>
+</#if>
+<#list result as item>
+ <tr height=20 style='mso-height-source:userset;height:15.0pt'>
+  <td height=20 class=xl693840 style='height:15.0pt'>${item.no}</td>
+  <td class=xl833840>${item.date}</td>
+  <td class=xl693840>${item.engineType}</td>
+  <td class=xl693840>${item.engineNum}</td>
+  <td class=xl693840>${item.type}</td>
+  <td class=xl693840>${item.faultPhenomenon}</td>
+  <td class=xl693840>${item.ashelf}</td>
+  <td class=xl693840>${item.bshelf}</td>
+  <td class=xl693840>${item.radioHost}</td>
+  <td class=xl693840>${item.multiMediaI}</td>
+  <td class=xl693840>${item.mike}</td>
+  <td class=xl693840>${item.controlCable}</td>
+  <td class=xl693840>${item.aerial}</td>
+  <td class=xl693840>${item.speaker}</td>
+  <td class=xl693840>${item.printer}</td>
+  <td class=xl693840>${item.other}</td>
+  <td class=xl693840>${item.testWell}</td>
+  <td class=xl693840>${item.testFixNote}</td>
+  <td class=xl693840>${item.remark}</td>
+  <td class=xl693840>${item.belongOrgName}</td>
+ </tr>
+ </#list>
+ <tr height=20 style='mso-height-source:userset;height:15.0pt'>
+  <td rowspan=3 height=60 class=xl743840 width=49 style='border-bottom:.5pt solid black;
+  height:45.0pt;border-top:none;width:37pt'>合计</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>　</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>　</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>　</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>　</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>　</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>A架</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>B架</td>
+  <td class=xl673840 width=37 style='width:28pt'>电台</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>MMI</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>话筒</td>
+  <td class=xl673840 width=37 style='width:28pt'>控制</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>天线</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>喇叭</td>
+  <td class=xl673840 width=37 style='width:28pt'>打印</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>其它</td>
+  <td class=xl673840 width=37 style='width:28pt'>试验</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>　</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>　</td>
+  <td rowspan=2 class=xl773840 style='border-bottom:.5pt solid black;
+  border-top:none'>　</td>
+ </tr>
+ <tr height=20 style='mso-height-source:userset;height:15.0pt'>
+  <td height=20 class=xl683840 width=37 style='height:15.0pt;width:28pt'>主机</td>
+  <td class=xl683840 width=37 style='width:28pt'>电缆</td>
+  <td class=xl683840 width=37 style='width:28pt'>机</td>
+  <td class=xl683840 width=37 style='width:28pt'>良好</td>
+ </tr>
+ <tr height=20 style='mso-height-source:userset;height:15.0pt'>
+  <td height=20 class=xl693840 style='height:15.0pt'></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+<#list sumResult as item>
+  <td class=xl693840>${item}</td>
+</#list>
+  <td class=xl693840></td>
+  <td class=xl693840></td>
+  <td class=xl693840></td><!-----------------------------><!--“从 EXCEL 发布网页”向导结束--><!----------------------------->
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=49 style='width:37pt'></td>
+  <td width=120 style='width:90pt'></td>
+  <td width=49 style='width:37pt'></td>
+  <td width=49 style='width:37pt'></td>
+  <td width=49 style='width:37pt'></td>
+  <td width=139 style='width:104pt'></td>
+  <td width=37 style='width:28pt'></td>
+  <td width=37 style='width:28pt'></td>
+  <td width=37 style='width:28pt'></td>
+  <td width=37 style='width:28pt'></td>
+  <td width=37 style='width:28pt'></td>
+  <td width=37 style='width:28pt'></td>
+  <td width=37 style='width:28pt'></td>
+  <td width=37 style='width:28pt'></td>
+  <td width=37 style='width:28pt'></td>
+  <td width=37 style='width:28pt'></td>
+  <td width=37 style='width:28pt'></td>
+  <td width=180 style='width:135pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=128 style='width:96pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</div>
+
+
+<!----------------------------->
+<!--“从 EXCEL 发布网页”向导结束-->
+<!----------------------------->
+</body>
+
+</html>

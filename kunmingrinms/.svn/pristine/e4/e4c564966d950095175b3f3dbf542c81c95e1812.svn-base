@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>组织机构选择弹出框demo</title>
+<link rel="stylesheet" type="text/css" href="../../resource/css_framework/css_bui/bui.css"/>
+<link rel="stylesheet" type="text/css" href="../../resource/css_framework/css_bui/dpl.css"/>
+</head>
+<body>
+<!-- <input type="text" id="orgSelectName" readonly="readonly" style="width: 175px;"> -->
+<!-- <input type="text" id="orgSelectId" readonly="readonly" style="display: none;"> -->
+<script type="text/javascript" src="../../resource/js_framework/jquery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../resource/js_framework/bui_framework/bui-min.js"></script>
+<script type="text/javascript">
+BUI.use('common/chooseExecuteUser/OrganizationTree',function(OrganizationTree){
+	 var organizationTree = new OrganizationTree({
+//          trigger : '#orgSelectName',
+         rootOrgId:'8affa073533aa3d601533bbef63e0010',//必填项
+         rootOrgText:'昆明通信段',//必填项
+         url : '/kunmingrinms//organization/getOrgChildrenById.cn',//必填项
+         autoHide: true,
+         align : {
+             points:['bl','tl']
+           },
+         width:260,
+         height:500
+        
+	 });
+	 organizationTree.render();
+	 organizationTree.on('orgSelected',function(e){
+		 console.log(e.org.text);
+		 console.log(e.org.id);
+	 });
+});
+</script>
+</body>
+</html>

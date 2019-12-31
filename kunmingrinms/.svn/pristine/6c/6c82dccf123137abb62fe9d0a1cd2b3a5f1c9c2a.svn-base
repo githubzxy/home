@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd"
+	default-autowire="byName">
+	
+	<!-- com.enovell.yunwei.**.service中**表示不确定层包通配 -->
+	<context:component-scan base-package="com.enovell.yunwei.**.service"/>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.0.216:1521:orcl" />
+		<!-- <property name="url" value="jdbc:oracle:thin:@10.206.97.14:2333:orcl" /> -->
+		<property name="username" value="kuntie_hutie_rinms2018" />
+		<property name="password" value="kuntie_hutie_rinms2018" />
+		<!-- <property name="username" value="rinms2" />
+		<property name="password" value="rinms2" /> -->
+		<property name="initialSize" value="10" />
+		<property name="maxActive" value="50" />
+		<property name="maxIdle" value="20" />
+		<property name="maxWait" value="1000" />
+		<property name="poolPreparedStatements" value="false" />
+		<property name="defaultAutoCommit" value="false" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" >
+			<list>
+				<value>com.enovell.system.common.domain</value>
+				<!--<value>com.enovell.enumeration.**</value>-->
+				<value>com.enovell.yunwei.**.domain</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle9iDialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.max_fetch_depth">3</prop>
+				<prop key="hibernate.jdbc.batch_size">50</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+<!-- 				<prop key="hibernate.hbm2ddl.auto">update</prop> -->
+			</props>
+		</property>
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="namedParameterJdbcTemplate"  
+    	class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">  
+    	<constructor-arg ref="dataSource" />  
+	</bean> 
+
+	<!--开启注解事务只对当前配置文件有效-->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+	<!-- 	轮询调度任务定义 -->
+<!-- 	<bean id="hhkjJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> -->
+<!-- 	    <property name="targetObject" ref="HhkjJobService" /> -->
+<!-- 	    <property name="targetMethod" value="syncData" /> -->
+<!-- 	</bean> -->
+	<!-- 	轮询触发条件定义 -->
+<!-- 	<bean id="hhkjTrigger"  class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean"> -->
+<!-- 	    <property name="jobDetail" ref="hhkjJob" /> -->
+<!--  	    <property name="startDelay" value="12000" /> 启动时延迟2秒 -->
+<!-- 	    <property name="repeatInterval" value="5000" />间隔5秒进行轮询 -->
+<!-- 	</bean> -->
+	
+	<!-- 	调度计划定义 -->
+<!-- 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean" autowire="no"> -->
+<!-- 	    <property name="jobDetails"> -->
+<!-- 	        <list> -->
+<!-- 				<ref bean="hhkjJob" /> -->
+<!-- 	        </list> -->
+<!-- 	    </property> -->
+<!-- 	    <property name="triggers"> -->
+<!-- 	        <list> -->
+<!-- 	            <ref bean="hhkjTrigger" /> -->
+<!-- 	        </list> -->
+<!-- 	    </property> -->
+<!-- 	</bean> -->
+	
+	
+	<import resource="context-mongo.xml"/>
+</beans>

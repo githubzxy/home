@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>人员选择测试</title>
+<link rel="stylesheet" type="text/css" href="../../resource/css_framework/css_bui/bui.css"/>
+<link rel="stylesheet" type="text/css" href="../../resource/css_framework/css_bui/dpl.css"/>
+</head>
+<body>
+
+<script type="text/javascript" src="../../resource/js_framework/jquery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../resource/js_framework/bui_framework/bui-min.js"></script>
+<script type="text/javascript">
+BUI.use(['common/chooseExecuteUser/ChooseUserDialog'],function(CU){
+	//人员选择公用主键，类型：弹出框。（有遮罩层）
+	var cu = new CU({
+		contextPath:'/kunmingrinms/',//项目路径
+		userIds:'',//上一次选中的人员数据
+		orgType:'3',//表示当前登录用户的组织类型
+		selectType:"1"//选择人员的类型，选择的是派发人员，还是抄送人员,1-派发人员，2-抄送人员
+	});
+	cu.show();
+	cu.on('sureBtn',function(e){
+		var selectUsers = e.data;//获取本次选择的人员数据
+	    console.log(selectUsers);
+	    cu.close();
+	});
+});
+</script>
+</body>
+</html>

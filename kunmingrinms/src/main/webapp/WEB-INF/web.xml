@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="kunmingrinms" version="2.5">
+  <display-name>kunmingrinms</display-name>
+  <welcome-file-list>
+<!--     <welcome-file>login.jsp</welcome-file> -->
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  	<!--<error-page>-->
+  		<!--<error-code>400</error-code>-->
+  		<!--<location>/error.jsp</location>-->
+  	<!--</error-page>-->
+  	<!--<error-page>-->
+  		<!--<error-code>404</error-code>-->
+  		<!--<location>/error.jsp</location>-->
+  	<!--</error-page>-->
+  	<!--<error-page>-->
+  		<!--<error-code>500</error-code>-->
+  		<!--<location>/error.jsp</location>-->
+  	<!--</error-page>-->
+  
+  	<!-- webAppRootKey是在java web项目的web.xml配置文件中表示项目的唯一标示（默认为webapp.root），防止多个项目出现webAppRootKey重复 -->
+	<context-param>
+		<param-name>webAppRootKey</param-name> 
+		<param-value>kunmingrinms.root </param-value>
+	</context-param>
+ 
+  
+  	<context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/context-db.xml</param-value>
+    </context-param>
+    
+    <listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	
+	 <!-- LOG4J -->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/log4j.properties</param-value>
+	</context-param>
+	<context-param>
+		<param-name>log4jRefreshInterval</param-name>
+		<param-value>6000</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<!-- LOG4J -->
+
+	<servlet>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/context-web.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<url-pattern>*.cn</url-pattern>
+	</servlet-mapping>
+
+	
+	
+	
+	<filter>
+		<filter-name>Spring character encoding filter</filter-name> 
+		<filter-class> 
+			org.springframework.web.filter.CharacterEncodingFilter 
+		</filter-class> 
+		<init-param> 
+			<param-name>encoding</param-name> 
+			<param-value>utf-8</param-value> 
+		</init-param> 
+	</filter> 
+	<filter-mapping> 
+		<filter-name>Spring character encoding filter</filter-name> 
+		<url-pattern>/*</url-pattern> 
+	</filter-mapping>
+
+	
+	
+  
+    <filter>
+	    <filter-name>loginFilter</filter-name>
+	    <filter-class>com.enovell.yunwei.system.web.IsLoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>loginFilter</filter-name>
+	    <url-pattern>/views/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+	    <filter-name>loginFilter</filter-name>
+	    <url-pattern>/main.jsp</url-pattern>
+	</filter-mapping>
+	
+	<!-- 设置session 60分钟过期 -->
+	<session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
+    
+    
+    <!-- 轻量化数据库连接池配置 -->
+	<context-param>
+		<param-name>driver</param-name>
+		<param-value>oracle.jdbc.driver.OracleDriver</param-value>
+	</context-param>
+	<context-param>
+		<param-name>url</param-name>
+		<param-value>jdbc:oracle:thin:@192.168.0.216:1521:orcl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>user</param-name>
+		<param-value>kuntie_hutie_rinms2018</param-value>
+	</context-param>
+	<context-param>
+		<param-name>password</param-name>
+		<param-value>kuntie_hutie_rinms2018</param-value>
+	</context-param>
+	<context-param>
+		<param-name>initialSize</param-name>
+		<param-value>10</param-value>
+	</context-param>
+	<context-param>
+		<param-name>maxActive</param-name>
+		<param-value>100</param-value>
+	</context-param>
+	<context-param>
+		<param-name>maxIdle</param-name>
+		<param-value>10</param-value>
+	</context-param>
+	<context-param>
+		<param-name>maxWait</param-name>
+		<param-value>5000</param-value>
+	</context-param>
+	<context-param>
+		<param-name>minIdle</param-name>
+		<param-value>1</param-value>
+	</context-param>
+	<context-param>
+		<param-name>removeAbandonedTimeout</param-name>
+		<param-value>20</param-value>
+	</context-param>
+	<!-- 轻量化数据库连接池随TOMCAT容器启动加载监听 -->
+	<!--<listener>-->
+  		<!--<listener-class>com.enovell.yunwei.lw.common.DBInitListener</listener-class>-->
+ 	<!--</listener>-->
+
+<!-- ================旧web.xml配置结束======================  -->
+	<!-- 服务器上传文件路径 -->
+	<context-param>
+		<param-name>filePath</param-name>
+		<param-value>d:/upload</param-value>
+	</context-param>
+	<!-- 服务器上传文件格式（以“,”号分隔） -->
+	<context-param>
+		<param-name>fileFormat</param-name>
+		<param-value>doc,docx,xls,xlsx,ppt,pptx,vsd,pdf,jpg,tif,dwg</param-value>
+	</context-param>
+	<!-- 读取xml上传文件路径servlet -->
+	<servlet>
+		<servlet-name>UploadFileServlet</servlet-name>
+		<servlet-class>com.enovell.yunwei.common.servlet.UploadFileServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	
+	<!-- PageOffice Begin -->
+	<servlet>
+		<servlet-name>poserver</servlet-name>
+		<servlet-class>com.zhuozhengsoft.pageoffice.poserver.Server</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>poserver</servlet-name>
+		<url-pattern>/poserver.zz</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>poserver</servlet-name>
+		<url-pattern>/sealsetup.exe</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>poserver</servlet-name>
+		<url-pattern>/posetup.exe</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>poserver</servlet-name>
+		<url-pattern>/pageoffice.js</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>poserver</servlet-name>
+		<url-pattern>/jquery.min.js</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>poserver</servlet-name>
+		<url-pattern>/pobstyle.css</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>adminseal</servlet-name>
+		<servlet-class>com.zhuozhengsoft.pageoffice.poserver.AdminSeal</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>adminseal</servlet-name>
+		<url-pattern>/adminseal.zz</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>adminseal</servlet-name>
+		<url-pattern>/loginseal.zz</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>adminseal</servlet-name>
+		<url-pattern>/sealimage.zz</url-pattern>
+	</servlet-mapping>
+	<mime-mapping>
+		<extension>mht</extension>
+		<mime-type>message/rfc822</mime-type>
+	</mime-mapping>
+	<context-param>
+		<param-name>adminseal-password</param-name>
+		<param-value>111111</param-value>
+	</context-param>
+	<!-- PageOffice End -->
+	
+		<!-- 下载servlet -->
+ 	<servlet>
+		<servlet-name>DownloadFileServlet</servlet-name>
+		<servlet-class>com.enovell.yunwei.attach.DownloadFileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadFileServlet</servlet-name>
+		<url-pattern>/DownloadFileServlet</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

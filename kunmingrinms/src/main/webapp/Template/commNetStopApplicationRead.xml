@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40"
+ xmlns:th="http://www.thymeleaf.org">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>panss</Author>
+  <LastAuthor>DN</LastAuthor>
+  <LastPrinted>2017-12-03T10:47:00Z</LastPrinted>
+  <Created>2004-12-31T03:40:00Z</Created>
+  <LastSaved>2018-02-09T01:29:56Z</LastSaved>
+  <Company>Prcedu</Company>
+  <Version>12.00</Version>
+ </DocumentProperties>
+ <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <KSOProductBuildVer dt:dt="string">2052-10.1.0.6690</KSOProductBuildVer>
+ </CustomDocumentProperties>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>10455</WindowHeight>
+  <WindowWidth>21495</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>0</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s47" ss:Name="常规 2">
+   <Alignment ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="9"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s63">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="9"/>
+  </Style>
+  <Style ss:ID="s64">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="9"/>
+  </Style>
+  <Style ss:ID="s65">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="9"/>
+  </Style>
+  <Style ss:ID="s66" ss:Parent="s47">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="9"/>
+  </Style>
+  <Style ss:ID="s67">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="宋体" x:CharSet="134"/>
+   <Interior/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s68">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="9"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="9" ss:Color="#000000"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Horizontal="Justify" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="9" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s71">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="9" ss:Color="#000000"/>
+   <NumberFormat ss:Format="hh:mm:ss/hh:mm:ss"/>
+  </Style>
+  <Style ss:ID="s72">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="宋体" x:CharSet="134"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s73">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="9" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s74">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="9" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s79">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="9"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s80">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="9"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s82">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s84">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Font ss:FontName="华文仿宋" x:CharSet="134" ss:Size="12"/>
+  </Style>
+ </Styles>
+ <Worksheet th:ss:Name="${sheetName}">
+  <Table ss:ExpandedColumnCount="18" th:ss:ExpandedRowCount="${listSize}+6" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s64" ss:DefaultColumnWidth="54"
+   ss:DefaultRowHeight="11.25">
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="17.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="64.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="27"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="64.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="27"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="36"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="76.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="215.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="28.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="67.5" ss:Span="1"/>
+   <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="64.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="73.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="139.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="42.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="34.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="36"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="27"/>
+   <Row ss:AutoFitHeight="0" ss:Height="24">
+    <Cell ss:MergeAcross="17" ss:StyleID="s82"><Data ss:Type="String" th:text="${titleName}"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="18.75">
+    <Cell ss:MergeDown="1" ss:StyleID="s65"><Data ss:Type="String">序号</Data></Cell>
+    <Cell ss:MergeAcross="3" ss:StyleID="s65"><Data ss:Type="String">计划起止日期和时间</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s65"><Data ss:Type="String">所属局</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s65"><Data ss:Type="String">申请单位</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s65"><Data ss:Type="String">施工地点</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s65"><Data ss:Type="String">所属专业</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s65"><Data ss:Type="String">施工类别</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s65"><Data ss:Type="String">施工属性</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s65"><Data ss:Type="String">工作内容</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s65"><Data ss:Type="String">涉及骨干网名称</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s65"><Data ss:Type="String">需配合铁路局</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s65"><Data ss:Type="String">方案审批编号</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s65"><Data ss:Type="String">中心批复号</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s65"><Data ss:Type="String">路局审批部门</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s65"><Data ss:Type="String">备注</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="23.25">
+    <Cell ss:Index="2" ss:StyleID="s65"><Data ss:Type="String">开始日期</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">开始时间</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">结束日期</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">结束时间</Data></Cell>
+   </Row>
+  <tableBody th:remove="tag" th:each="list,listStat : ${listData}">
+   <Row ss:Height="33.75" ss:StyleID="s62">
+    <Cell ss:StyleID="s68"><Data ss:Type="Number" th:text="${listStat.count}"></Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String" th:text="${list.startDate}"></Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String" th:text="${list.startTime}"></Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String" th:text="${list.endDate}"></Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String" th:text="${list.endTime}"></Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String" th:text="${list.belongOffice}"></Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String" th:text="${list.org}"></Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String" th:text="${list.executionAddr}"></Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String" th:text="${list.belongCraft}"></Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String" th:text="${list.executionType}"></Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String" th:text="${list.executionAttr}"></Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String" th:text="${list.workContent}"></Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String" th:text="${list.mainNetName}"></Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String" th:text="${list.railwaysBureau}"></Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String" th:text="${list.planExaminNum}"></Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String" th:text="${list.monthPlanExamin}"></Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String" th:text="${list.executionPlanNum}"></Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String" th:text="${list.remark}"></Data></Cell>
+   </Row>
+  </tableBody>
+   <Row ss:AutoFitHeight="0" ss:Height="17.25" ss:Span="1"/>
+   <Row th:ss:Index="${listSize}+6" ss:Height="17.25">
+    <Cell ss:MergeAcross="6" ss:StyleID="s84"><Data ss:Type="String">主管领导审批：</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Layout x:Orientation="Landscape" x:CenterHorizontal="1"/>
+    <Header x:Margin="0.156944444444444"/>
+    <Footer x:Margin="0.156944444444444"/>
+    <PageMargins x:Bottom="0.156944444444444" x:Left="0.156944444444444"
+     x:Right="0.156944444444444" x:Top="0.23611111111111099"/>
+   </PageSetup>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <Scale>75</Scale>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>600</VerticalResolution>
+   </Print>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <RangeSelection>R1C1:R1C18</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

@@ -1,0 +1,330 @@
+body {
+    background-color: #D5DBDE !important;
+    margin: 0;
+	font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif;
+}
+
+.main {
+    background-color: white;
+    width: 1018px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    height: 81px;
+    text-align: left;
+	font-size: 14px;
+	color: #0d0d0d;
+}
+
+.logo img {
+    width: 328px;
+    height: 33px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.logo a {
+    color: #0c82ff;
+    text-decoration: none;
+}
+.logo a:hover {
+    color: #F88127;
+}
+
+.banner {
+    width: 1018px;
+    height: 317px;
+    background-image: url(../img/banner.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    text-align: left;
+}
+
+.menu {
+    width: 1018px;
+    height: 37px;
+	text-align: center;
+    background-color: #1369B2;
+}
+
+div.menu ul, div.linkmenu ul {
+    list-style: none; /* 去掉ul前面的符号 */
+    margin: 0px; /* 与外界元素的距离为0 */
+    padding: 0px; /* 与内部元素的距离为0 */
+    width: auto; /* 宽度根据元素内容调整 */
+}
+
+.menu ul li {
+    line-height: 37px;
+    float: left;
+    width: 14%;
+}
+
+.menu ul li :hover {
+    background-color: #F88127;
+    text-decoration: none;
+    color: white;
+}
+
+img.menusplit {
+    height: 25px;
+    float: right;
+    margin-top: 7px;
+}
+
+a.menusys {
+	width: 139px;
+    height: 37px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    letter-spacing: 1px; /*字间距*/
+    font-size: 15px;
+}
+
+
+a.menusys:last-child{
+	width: 160px;
+    margin-left: 3px;
+}
+
+a.menusys :hover{
+	
+}
+
+.content {
+    width: 1018px;
+    height: 395px;
+    background-color: white;
+    margin-top: 23px;
+}
+
+.container {
+    float: left;
+	font-size: 14px;
+	color: #0d0d0d;
+}
+
+div.small {
+    width: 181px;
+    height: 375px;
+    padding-left: 12px;
+}
+
+div.big {
+    width: 258px;
+    height: 375px;
+    margin-left: 11.3px;
+	border: 1px solid #E8EDF1;
+	background-color: #F5F9FC;
+}
+
+div.module_title {
+    height: 30px;
+    margin-top: 15px;
+    text-align: left;
+    border-bottom: 1px solid #E8EDF1;
+	letter-spacing: 3px; /*字间距*/
+}
+
+div.module_title span {
+    padding-left: 20px;
+}
+
+div.module_title span:last-child {
+    padding-left: 80px;
+}
+
+div.module_content {
+    margin: 3px;
+	height: 330px;
+	overflow: hidden;
+}
+
+div.module_content ul {
+    margin: 0;
+	padding: 0;
+	font-size: 13px;
+}
+
+div.module_content ul li {
+	margin-top: 13px;
+	list-style: none;
+	letter-spacing: 1px;
+	line-height: 0px;
+}
+
+div.module_content ul li :hover {
+    color: #0c82ff;
+}
+
+div.module_content ul li a {
+	color: #0d0d0d;
+    text-decoration: none;
+	line-height: 20px;
+}
+
+div.safeday {
+    float: left;
+    width: 181px;
+    height: 232px;
+    margin-top: 10px;
+	border: 1px solid #E8EDF1;
+	background-color: #F5F9FC;
+	letter-spacing: 3px; /*字间距*/
+}
+
+.linkmenuitem {
+    width: 100%;
+    height: 31px;
+    line-height: 33px;
+    background-color: #F5F9FC;
+    border: 1px solid #E8EDF1;
+    font-size: 14px;
+}
+
+.linkmenu .linkmenuitem .menusys {
+    color: #0d0d0d;
+    letter-spacing: 3px; /*字间距*/
+    width: 173px;
+    text-align: left;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.linkmenu .linkmenuitem .menusys:hover {
+    color: #0c82ff;
+}
+
+.linkmenuitemimg {
+    margin-left: 20px;
+    margin-right: 10px;
+    display: inline-block;
+    width: 20px;
+}
+
+
+/* lidt新增样式 */
+.loginDiv{  
+    width: 250px;
+    height: 180px;
+    border: 1px solid #E8EDF1; 
+    background: #F5F9FC;
+    display: none;
+    margin-top: 0px;  
+    z-index: 1000;
+    float: right;
+}
+.userDiv {
+	position:relative;
+	height:25px;
+	top: 30px;
+    left: 20px;
+}
+.passDiv {
+	position:relative;
+	height:25px;
+	top: 50px;
+	left: 20px;
+}
+.loginBtnDiv {
+	position:relative;
+	top: 70px;
+    left: 70px;
+    z-index: 1000;
+	width:85px; 
+	height:33px;
+	cursor:pointer;  /*鼠标移上变成手*/
+}
+.textStyle {
+	width:151px;
+	height:25px;
+	border:1px solid #13cc3a;
+	line-height:25px;	/* 是兼容IE6，7，8 文字垂直居中  */
+}
+.text:link {
+	border:1px solid #13cc3a;
+}
+.text:visited {
+	border:1px solid #13cc3a;
+}
+.text:hover {
+	border:2px double #13cc3a;
+}
+.text:focus  {
+	outline:1px double #13cc3a;
+}
+
+/* liwt新增样式 */
+div.detail {
+    width: 800px;
+    height: 375px;
+    margin-left: 11.3px;
+	border: 1px solid #E8EDF1;
+	background-color: #F5F9FC;
+}
+div.message_Detail {
+    /* height: 30px; */
+    margin-top: 15px;
+    text-align: left;
+    font-size: 15px;
+}
+ div.message_left {
+	letter-spacing: 3px; /* 字间距 */
+	float: left;
+}
+div.message_Detail label{
+    margin-left: 15px;
+    /*margin-top: 15px; */
+    text-align: left;
+    font-size :15px;
+	letter-spacing: 3px; /*字间距*/
+	
+}
+div.message_show{
+	height: 50px;
+    margin-top: 15px;
+    margin-right:15px;
+    border-bottom: 1px solid #E8EDF1;
+}
+div.message_right {
+	margin-right:50px;
+	letter-spacing: 3px; /* 字间距 */
+	float:right;
+}
+div.message_show input{
+	height: 25px;
+}
+div.infoData{
+	margin-top:15px;
+	
+}
+div.message_info textarea{
+	
+	width: 619px;
+	height: 80px;
+}
+div.message_info {
+    margin-top: 15px;
+    margin-right:15px;
+    border-bottom: 1px solid #E8EDF1;
+	height: 100px;
+}
+.message_accessory .bui-simple-list{
+	height: 133px;
+    overflow: auto;
+    background: #fff;
+    border: 1px solid #ccc;
+    width: 717px;
+    margin-left: 13px;
+    margin-top: 7px;
+}
+div.message_accessory{
+	height:200px;
+    margin-top: 15px;
+    margin-right:15px;
+}

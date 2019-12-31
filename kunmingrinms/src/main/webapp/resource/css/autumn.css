@@ -1,0 +1,106 @@
+textarea{
+	resize:none
+}
+fieldset{
+	font-family: Arial;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin: 0px 2px;
+	border: 2px groove threedface;
+	padding: 4.2px 9px 7.5px 9px;
+}
+hr {
+	margin:6px 5px;
+}	
+.bodypadding {
+	padding:20px;
+}
+
+.query_info{
+	border-top:0px ;
+	border-left:0px ;
+	border-right:0px ;
+	border-bottom:0px ;
+}
+.top_message{
+	background:#e9e8e8;
+	border:1px solid #95b8e7;
+	text-align: center ;
+	width:95%;
+	height:30px;
+	position: absolute;
+	top: 0px;
+	border-radius:15px;
+	font-weight:bold;
+	font-size: 18px;
+	padding:10px 0 0 0;
+}
+a{
+	margin:3px;
+}
+a.faction{color:#72D0F4; text-decoration:none;}
+a.faction:hover{color:#ffffff;}
+
+/***autumn css****/
+.autumn_table_div{
+	width:99%;
+	padding:10px; 
+	overflow:scroll;
+	overflow-x:hidden;
+	overflow-y:hidden;
+	text-align: center ;
+}
+.autumn_table_title{
+	font-weight:bold;
+	font-size: 20px;
+	
+}
+
+thead{
+	font-weight:bold;
+}
+td{
+	height:30px;
+	word-break:break-all;
+}
+
+.autumn_table{
+	margin:0 0 10px 0;
+	width:100%;
+	border-collapse: collapse; 
+	text-align: center ;
+	border:1px solid #AED0E5 ;
+}
+.autumn_table td{
+	border-collapse:collapse;
+	border-right:1px solid #AED0E5 ;
+	border-bottom:1px solid #AED0E5 ;
+}
+.left{
+	text-align: left ;
+	padding-left:10px;
+}
+.right{
+	text-align: right ;
+	padding-right:10px;
+}
+.autumn_table_background{
+	background:#D1E6F7;
+}
+.autumn_add_div{
+	width:800px;
+	height:500px;
+	padding:10px; 
+	display:none;
+	overflow:scroll;
+	overflow-x:hidden
+}	
+.autumn_add_table{
+	width:100%;
+	border:0;
+	cellpadding:0;
+	cellspacing:0;
+}
+.oper_button_div{
+	float:right;
+}

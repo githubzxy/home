@@ -1,0 +1,117 @@
+body,div,input{
+	margin:0; /*所有外边距*/
+	padding:0; /*所有内边距*/
+}
+
+.loginBackground { 
+	position:absolute;
+	top:50%; 
+	left:50%; 
+	width:1000px; 
+	height:600px; 
+	margin-top:-300px;/*注意这里必须是DIV高度的一半*/ 
+	margin-left:-500px;/*这里是DIV宽度的一半*/ 
+}
+.loginImage {
+	
+	position:relative;
+	/*border:5px solid red;*/
+	width:240px; 
+	height:230px;
+	top:165px;
+	left:700px;
+}
+
+.userDiv {
+	
+	position:relative;
+	width:151px; 
+	height:25px;
+	top:71px;
+	left:76px;
+	*top:70px;
+}
+.passDiv {
+	
+	position:relative;
+	width:151px; 
+	height:25px;
+	top:93px;
+	left:76px;
+	_top:89px;
+}
+.checkboxDiv {
+	
+	position:relative;
+	float:left;
+	width:13px; 
+	height:13px;
+	top:116px;
+	left:75px;
+	_top:108px;
+	border:#45EC66 1px solid;
+	overflow:hidden;
+}
+.loginBtnDiv {
+	position:relative;
+	width:85px; 
+	height:33px;
+	top:143px;
+	left:87px;	
+	_top:135px;		/* 带"_"的属下是兼容IE6,  带“*”的属下是兼容IE6，7，8 */
+	*left:73px;
+	_left:70px;
+	cursor:pointer;  /*鼠标移上变成手*/
+}
+
+.textStyle {
+	
+	width:151px;
+	height:25px;
+	border:1px solid #13cc3a;
+	line-height:25px;	/* 是兼容IE6，7，8 文字垂直居中  */
+}
+.text:link {
+	border:1px solid #13cc3a;
+}
+.text:visited {
+	border:1px solid #13cc3a;
+}
+.text:hover {
+	border:2px double #13cc3a;
+}
+.text:focus  {
+	outline:1px double #13cc3a;
+}
+
+.checkboxStyle {
+	
+	*width:13px;	/* 带“*”的属下是兼容IE6，7，8  */
+	*height:13px;
+	vertical-align:9px;
+	*vertical-align:9px;
+	_vertical-align:9px;
+}
+/* 	.pageBody{
+/* gradientType:渐变的类型:0竖向渐变，1横向渐变*/
+/* 		filter:progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#dcf2fa,endColorStr=#ffffff);  /* IE 6 7 8 */
+/* 		background: -ms-linear-gradient(top, #dcf2fa, #ffffff);       /* IE 10 */
+/* 		background: -moz-linear-gradient(right, #dcf2fa, #ffffff);        /* Firefox 3.6+ 火狐不支持垂直渐变 */
+/* 		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dcf2fa),to(#ffffff)); /* Safari 4-5, Chrome 1-9 */
+/* 		background: -webkit-linear-gradient(top, #dcf2fa,#ffffff);   /*Safari5.1 Chrome10+*/
+/* 		background: -o-linear-gradient(top, #dcf2fa,#ffffff);  		/* Opera 11.10+ */ 
+/*	}*/ 
+
+.download {
+	
+	position:relative;
+	/*border:1px solid red;*/
+	width:120px; 
+	height:50px;
+	top:300px;
+	left:795px;
+}
+
+img {
+	cursor:pointer;  /*鼠标移上变成手*/
+}

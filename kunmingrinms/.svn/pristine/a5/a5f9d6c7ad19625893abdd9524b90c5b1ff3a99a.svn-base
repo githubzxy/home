@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewPort" content="width=device-width,initial-scale=1.0" >
+<title>新增</title>
+<link href="../../resource/css_framework/css_bui/dpl.css" rel="stylesheet">
+<link href="../../resource/css_framework/css_bui/bui.css" rel="stylesheet">
+<link href="../../resource/css_framework/css_bui/tableLayout.css" rel="stylesheet">
+<style type="text/css">
+.text-center{
+	text-align:center;
+
+}
+
+</style>
+</head>
+<body>
+
+<button class="button button-primary" id="addBtn">新增</button>
+<script charset="utf-8" src="../../resource/js_framework/jquery/jquery-1.8.3.min.js"></script>
+<script charset="utf-8" src="../../common/sq.js"></script>
+<script charset="utf-8" src="../../resource/js/commonTypeMap.js"></script>
+<script type="text/javascript">
+var contextPath="http://localhost:8080/kunmingrinms/";
+seajs.config(
+	{  paths:{
+		views : contextPath + 'views',
+		common : contextPath + 'common',
+		bui : contextPath + 'bui'}
+});
+seajs.use('views/workshopProblemLib/AutumnProblemAdd',function(AutumnProblemAdd){
+	var autumnProblemAdd = new AutumnProblemAdd({
+		orgId:"400b1f9eaaad40cb8e6f037f2811cff8",
+		contextPath:contextPath,
+	});
+	//绑定事件
+	$('#addBtn').on('click',function(){
+		autumnProblemAdd.show();
+	});
+});
+
+
+</script>
+</body>
+</html>

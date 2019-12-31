@@ -1,0 +1,250 @@
+/**
+ * 文件新增模块
+ */
+define('views/fileSystem/FileManagementAdd',['bui/common',
+	'common/form/FormContainer','common/uploader/UpdateUploader',
+	'views/fileSystem/SelectSuggest','bui/mask',
+	'common/data/PostLoad'],function(r){
+	var BUI = r('bui/common'),
+		FormContainer = r('common/form/FormContainer'),
+		UpdateUploader = r('common/uploader/UpdateUploader'),
+		SelectSuggest = r('views/fileSystem/SelectSuggest'),
+		Mask = r('bui/mask'),
+		PostLoad = r('common/data/PostLoad');
+	var FileManagementAdd = BUI.Overlay.Dialog.extend({
+		/**
+		 * 初始化
+		 */
+		initializer: function(){
+			var _self = this;
+			_self.addChild(_self._initFormContainer());
+		},
+		/**
+		 * 绑定事件
+		 */
+		bindUI: function(){
+			var _self = this;
+			_self.set('zIndex',1056);
+			_self._selectAutoFilling();
+			//渲染专业类别
+			_self._renderProType();
+			
+			//隐藏本页面单选框里的第一个空白框
+			$(".bui-stdmod-body select option[value='']").hide();
+			//定义按键
+			var buttons = [
+				{
+					text: '保存',
+					elCls: 'button',
+					handler: function(){
+						var success = _self.get('success');
+						if(success){
+							success.call(_self);
+						}
+					}
+				},{
+					text: '关闭',
+					elCls: 'button',
+					handler: function(){
+						if(this.onCancel() !== false){
+							this.close();
+						}
+					}
+				}
+			];
+			_self.set('buttons',buttons);
+		},
+		/**
+		 * 渲染
+		 */
+		renderUI: function(){
+			var _self = this,contextPath = _self.get('contextPath');
+			_self._initUploader();
+		},
+		/**
+		 * 初始化下拉框数据
+		 */
+		_selectAutoFilling:function(){
+			fileSystem_fileSuitableRange.listData("#fileSuitableRangeAdd");
+			fileSystem_fileValidTime.listData("#fileValidTimeAdd");
+			fileSystem_isDetailing.listData("#isDetailingAdd");
+			
+			
+		},
+//		/**
+//		 * 渲染专业类别
+//		 */
+//		_renderProType : function(){
+//			var _self = this,contextPath = _self.get('contextPath');
+//			var suggest = new SelectSuggest({
+//				render : '#fileTypeAdd',//<div name="emsName" id="emsName" style="width: 191px;"></div>
+//				name : 'fileType',
+//				width : 230
+//			});
+//			_self.set('suggest',suggest);
+//			
+//			var postLoad = new PostLoad({
+//				url : contextPath + 'fileSystemAction/getDistinctProTypeList.cn',
+//			}); 
+//			postLoad.load({}, function(emsNameList){
+//				suggest.set('data', emsNameList);
+//				suggest.render();
+////				$('.tableLayout input[type="text"], .tableLayout input[type="password"], .tableLayout textarea, .tableLayout select').css('min-height','0');
+//			});
+//		},
+		/**
+		 * 渲染专业类别
+		 */
+		_renderProType : function(){
+			//初始化专业类别
+    		technicalInfo_type.listData("#fileTypeAdd");
+		},
+		/**
+		 * 初始化表单
+		 */
+		_initFormContainer: function(){
+			var _self = this,contextPath = _self.get('contextPath');
+			var colNum = 2;
+			var childs = [{
+				label: '作业指导书名称',
+				redStarFlag: true,
+				itemColspan: 2,
+				item: '<input type="text" name="fileName" id="fileNameAdd" data-rules="{required:true}"/>'
+			},{
+				label: '专业类别',
+				redStarFlag: true,
+				itemColspan: 2,
+				item: '<select name="fileType" id="fileTypeAdd" data-rules="{required:true}"><option value=""></option></select>'
+//				item: '<div   id="fileTypeAdd" ></div>'
+			},
+//			{
+//				label: '适用范围',
+//				redStarFlag: true,
+//				itemColspan: 1,
+//				item: '<select name="fileSuitableRange" id="fileSuitableRangeAdd" data-rules="{required:true}"><option value=""></option></select>'
+//			},{
+//				label: '有效时间',
+//				redStarFlag: true,
+//				itemColspan: 1,
+//				item: '<select name="fileValidTime" id="fileValidTimeAdd" data-rules="{required:true}"><option value=""></option></select>'
+//			},{
+//				label: '车间细化',
+//				redStarFlag: true,
+//				itemColspan: 1,
+//				item: '<select name="isDetailing" id="isDetailingAdd" data-rules="{required:true}"><option value=""></option></select>'
+//			},
+			{
+				label: '附件',
+				itemColspan: 2,
+				item: '<div name="attachFileId" id="uploadFileAddDiv" style="height:100px;overflow-y:auto"></div>'
+			},{
+				label: '备注',
+				itemColspan : 2,
+				item : '<textarea name="remark" id="remarkAdd" style="width:99.5%;height:100px;" data-rules="{maxlength:250}" placeholder="最多输入250字"/>'
+			}];
+			var form = new FormContainer({
+				id: 'fileFormAdd',
+				colNum: colNum,
+				formChildrens: childs
+			});
+			return form;
+		},
+		/**
+		 * 初始化上传文件
+		 */
+		_initUploader:function(){
+			var _self = this,contextPath = _self.get('contextPath');
+			//上传附件
+			var uploader = new UpdateUploader({
+				render: '#uploadFileAddDiv',
+				url: contextPath + 'attachFile/upload.cn',
+				isSuccess: function(result){
+					return true;
+				},
+			});
+			uploader.render();
+			_self.set('uploader',uploader);
+		},
+		/**
+		 * 获取上传文件数据(上传的)
+		 */
+		getUploadFileData:function(){
+			var _self = this,uploader = _self.get('uploader');
+			var arr = new Array();
+			// 获取上传文件的对列
+			var fileArray = uploader.getSucFiles();
+			for(var i in fileArray){
+		 		var dto = {name : fileArray[i].name,path : fileArray[i].path};
+		 		arr.push(dto);
+			};
+			return arr;
+		},
+	},{
+		ATTRS: {
+			elAttrs : {value: {id:"fileAddDialog"}},
+//			id: {value : 'fileAddDialog'},
+			title: {value : '作业指导书'},
+			width: {value:635},
+	        height: {value:370},
+	        contextPath: {},
+	        closeAction: {value: 'destroy'},//关闭时销毁加载到主页面的HTML对象
+	        mask: {value: true},
+	        zIndex:'1050',
+	        success: {
+	        	value: function(){
+	        		var _self = this,contextPath = _self.get('contextPath');
+	        		var formAdd = _self.getChild('fileFormAdd',true);
+//	        		var fileType = $("input[name='fileType']").val();
+//	        		var data = _self.get("suggest").get("data");
+//	        		var state = false;//设置专业类别的状态
+//	        		data.forEach(function(e){
+//	        			if(e instanceof Object){
+//	        				if(e.text==fileType) state=true;
+//	        			}else{
+//	        				if(e==fileType) state=true;
+//	        			}
+//	        		});
+	        		//验证不通过
+	        		if(!formAdd.isValid()){
+	        			return;
+	        		}
+	        		//当专业类别不存在时，验证不通过
+//	        		if(!state){
+//	        			Mask.maskElement('#fileAddDialog');						
+//          				BUI.Message.Alert('请选择正确的专业类别',function(){
+//                			Mask.unmaskElement('#fileAddDialog');
+//                		},"warning");	
+//          				$('.bui-message .bui-ext-close').hide();
+////	        			$("input[name='fileType']").val("");
+//	        			return;
+//	        		}
+	        		var data = formAdd.serializeToObject();
+	        		//获取上传文件
+	        		data.uploadFileArr = JSON.stringify(_self.getUploadFileData());
+	        		//提交到数据库
+	        		var postLoad = new PostLoad({
+						url : contextPath + 'fileSystemAction/addInfor.cn',
+						el : '#fileAddDialog',
+						loadMsg : '保存中...'
+					}); 
+					postLoad.load(data, function(result){
+						if(result != null){
+							_self.fire("completeAddSave",{
+								result : result
+							});
+						}
+					});
+	        	}
+	        },
+	        events: {
+	        	value: {
+	        		/**
+	        		 * 绑定保存按钮事件
+	        		 */
+	        		'completeAddSave' : true,
+	        	}
+	        }
+		}
+	});
+	return FileManagementAdd;
+});

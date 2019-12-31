@@ -1,0 +1,139 @@
+@CHARSET "UTF-8";
+body {
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+}
+
+.faction:hover {
+	text-decoration: none;
+}
+
+.faction {
+	color: #72D0F4;
+	text-decoration: none;
+}
+
+.faction:hover {
+	color: #ffffff;
+}
+
+
+.user_msg_info {
+	color: #72D0F4;
+	height: 64px;
+	text-align: right;
+	max-width: 320px;
+	width: 100%;
+	float: right;
+	margin-right:30px;
+	overflow: hidden;
+}
+
+.news {
+	font-size: 18px;
+}
+
+.x-accordion-title {
+	background: #dfeaf2;
+	border-top: 2px solid white;
+	padding: 8px 10px;
+	text-align: center;
+}
+
+.x-collapsed .x-accordion-body {
+	height: 0;
+	overflow: hidden;
+}
+
+.bui-tab-item {
+	position: relative;
+}
+
+.bui-tab-item .bui-tab-item-text {
+	padding-right: 25px;
+}
+
+.bui-tab-item .icon-remove {
+	position: absolute;
+	right: 2px;
+	top: 2px;
+	z-index: 20;
+	cursor: pointer;
+}
+
+#mainContent {
+	width:100%;
+	height:100%;
+	margin:0;
+	
+}
+#top {
+	height:74px;
+	border: 1px solid #3892d3;
+}
+
+#topLeft {
+	width: 60%; 
+	height: 74px; 
+	float: left; 
+	overflow:hidden;
+}
+
+#topRight {
+	width: 40%; 
+	height: 74px; 
+	float: left; 
+	overflow:hidden;
+}
+
+#content {
+	width:100%;
+	overflow:hidden;
+}
+
+#leftNavigator {
+	float:left;
+	width:150px;
+	height:100%;
+	border-right: 2px solid #3892d3;
+}
+
+#mainContainer {
+	float:left;
+	height:100%;
+	overflow:hidden;
+}
+
+#fullScreenDiv {
+	position: absolute;
+	right:20px;
+	top: 75px;
+	overflow: hidden;
+	z-index: 2000;
+}
+
+/*
+* 设置一级菜单样式
+*/
+#oneFunction {
+	position: absolute;
+	z-index:0;
+	color:#72D0F4;
+	height:30px; 
+	padding: 43px 0 0 25%;
+}
+
+/*
+* 设置二级菜单样式
+*/
+.leftFuction {
+	overflow: auto;
+	text-align: center;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+.ext-border-layout {
+	padding: 0px;
+}

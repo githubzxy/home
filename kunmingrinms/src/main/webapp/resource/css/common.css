@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+.row{
+	margin-left : 0;
+}
+fieldset{
+	margin : 2px 10px 2px 10px;
+	border : 2px solid;
+	-moz-border-radius:8px; 
+	border-radius:8px; 
+}
+legend{
+	padding:0;
+	margin-left : 10px;
+	cursor:pointer;
+	font-weight:bold;
+}
+#grid{
+	margin : 5px 5px 5px 5px;
+}
+.bui-grid .x-grid-checkbox {
+	backgroud-color : red;
+}
+.msgHint{
+	background:#eee;
+	border : 0;
+}
+
+/*
+* BUI grid 中的itemStatusFields的状态 read对应的样式
+*/
+.bui-grid-row-read{
+    color: red;
+ }

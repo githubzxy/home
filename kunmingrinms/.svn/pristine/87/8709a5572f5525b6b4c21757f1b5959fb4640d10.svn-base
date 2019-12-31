@@ -1,0 +1,470 @@
+var tab;//tab容器声明
+var updatePassDialog;// 修改密码
+var accordionLayout;
+var container;
+var tempChild = "tempChild";
+
+$(document).ready(function () {
+	
+	fitWHBoth();
+	$(window).resize(fitWHBoth);
+	bindFullScreenDivEvent();
+	
+	initOneFunction();
+	setPopupAndAudio();
+});
+
+
+
+
+////////////////////////////////////////////////////弹框提示开始//////////////////////////////////////////////////////////
+/**
+ * 设置弹出框和声音提示
+ */
+function setPopupAndAudio() {
+	//载入声音文件
+//	$('<audio id="chatAudio"><source src="'+contextPath+'/resource/aduio/567.wav" type="audio/wav">  </audio>').appendTo('body');
+	getMsgByUser();
+	setInterval(getMsgByUser,10 * 60 * 1000);
+}
+
+/**
+ * 通过登录人，获取当前登录人的消息
+ */
+function getMsgByUser(){
+	$.post(contextPath + 'personalPromptAction/getShowPromptDTOs.cn', //发起POST AJAX请求到后台
+			{//请求参数列表
+	},function(data,status){
+		if(status){
+			msgRemind(data);
+		}else{
+			commonFailure();
+		}
+	},'json');
+}
+
+function msgRemind(data){
+	if(data && data.length == 0){
+		return;
+	}
+    var jumpStr = "";
+	for(var i = 0 ; i < data.length ; i ++){
+		var count = data[i].todoNumber;//消息条数
+		if(count != 0){ // 条数为0，则不提示
+			var type = data[i].todoPermission;//消息类型
+			jumpStr += "<a style='cursor:pointer' onclick=menuClick('"+getTypeTitle(type)+"','"+getTypeUrl(type)+"','"+getTypeId(type)+"') >您有<span style='color:#FF0000'>"+count+"</span>条【"+getTypeName(type)+"】新消息</a><br>";
+		}else{
+			continue;
+		}
+	}
+	if(jumpStr != ""){
+		$.messager.lays(300, 200);
+		$.messager.show('消息提醒',jumpStr,10 * 1000);
+//		$('#chatAudio')[0].play(); //播放声音
+	}
+}
+
+////////////////////////////////////////////////////弹框提示结束//////////////////////////////////////////////////////////
+/**
+ * 非全屏content页面布局
+ */
+function fitWHBoth(){
+	var winHeight = $(window).height();
+	var winWidth = $(window).width();
+	$('#content').height(winHeight - 76);
+	$('#mainContainer').width(winWidth - 152);
+}
+
+/**
+ * 全屏content页面布局
+ */
+function fullscreenFitWHBoth() {
+	var winHeight = $(window).height();
+	var winWidth = $(window).width();
+	$('#content').height(winHeight);
+	$('#mainContainer').width(winWidth);
+}
+
+/**
+ * 绑定全屏按钮事件
+ */
+function bindFullScreenDivEvent() {
+	$("#fullScreenDiv").hover(
+			function() {
+				$("#fullscreenImg").attr("src", contextPath +"resource/img/blue_fullscreen.png");
+				$("#fullscreenExitImg").attr("src", contextPath +"resource/img/blue_fullscreen_exit.png");
+				$("#fullScreenDiv a").css("color", "#00ADEE");
+			},
+			function() {
+				$("#fullscreenImg").attr("src", contextPath +"resource/img/black_fullscreen.png");
+				$("#fullscreenExitImg").attr("src", contextPath +"resource/img/black_fullscreen_exit.png");
+				$("#fullScreenDiv a").css("color", "#424141");
+			}
+		);
+		$("#fullScreenDiv").toggle(
+				function() {
+					$("#fullScreenDiv a:first").hide();
+					$("#fullScreenDiv a:last").show();
+				},
+				function() {
+					$("#fullScreenDiv a:first").show();
+					$("#fullScreenDiv a:last").hide();
+				}
+		);
+}
+
+/**
+ * 全屏tab页面
+ */
+function fullscreenTab(){
+	
+	$("#fullScreenDiv").css("top", "0px");
+	fullscreenFitWHBoth();
+	$("#top").hide();
+	$("#leftNavigator").hide();
+	
+	refreshActivedTab();
+}
+
+/**
+ * 退出全屏tab页面
+ */
+function fullscreenExitTab(){
+	
+	$("#fullScreenDiv").css("top", "75px");
+	fitWHBoth();
+	$("#top").show();
+	$("#leftNavigator").show();
+	
+	refreshActivedTab();
+}
+
+// 刷新当前活动Tab
+function refreshActivedTab() {
+	var activedTab = tab.getActivedItem();
+	if(activedTab) {
+		activedTab.reload( );
+	}
+}
+
+/**
+ * 初始化一级菜单
+ */
+function initOneFunction() {
+	//  组装一级菜单
+	var oneFunctionStr = "";
+	 //查询一级菜单
+	$.ajax({
+		   type: "post",
+		   dataType: "json", 
+		   async: false,
+		   url: contextPath + "permission/getNextPers.cn",
+		   success: function(response){
+
+			   $.each(response,function(i,data){
+				   
+				   var onePerId = data.id;
+				   var onePerDesc = data.permissionDesc;
+				   // 过滤网管菜单
+				   if(filterFunction(onePerId)) {
+					 
+					/* $.each函数
+					 * break----用return false; 
+					 * continue --用return ture;
+					 */ 
+					 return true;
+				   }
+				   oneFunctionStr += "<a class='firstFuncButton' onclick=\"initLeftFunction('"+ onePerId + "','" + onePerDesc +"')\" href=\"javascript:void(0);\">"+ onePerDesc +"</a>";
+			   });
+//			   oneFunctionStr += "<a class='firstFuncButton' target='_blank' href='http://10.160.94.86:8818/guangtieYearMonth/login/jumpIn.cn?userId="+  loginUserId +"'>年月报表</a>";
+// 			   // 添加跳转辉煌系统菜单
+// 			   oneFunctionStr += "<a class='firstFuncButton' target='_blank' href='/kunmingrinms/kunmingrinms-debug/kunmingrinms.jsp'>电务调度指挥中心系统</a>";
+// 			   // 添加跳转网管模块菜单
+// 			   oneFunctionStr += "<a class='firstFuncButton' target='_blank' href='http://10.160.94.88/kunmingrinms/WangGuangrLoginServlet?userId="+  loginUserId +"'>网管模块</a>";
+// 			   // 添加跳转新网管模块菜单
+// 			   oneFunctionStr += "<a class='firstFuncButton' target='_blank' href='http://10.160.94.88/std/WangGuangrLoginServlet?userId="+  loginUserId +"'>新网管模块</a>";
+//			   oneFunctionStr += "<a class='firstFuncButton' target='_blank' href='http://localhost:8000/std/WangGuangrLoginServlet?userId="+  loginUserId +"'>新网管模块</a>";
+			   $("#oneFunction").append(oneFunctionStr);
+//			   initLinkbuttonStyle();
+		   }
+	});
+	
+}
+
+/**
+ * 初始化一级菜单linkbutton样式
+ */
+function initLinkbuttonStyle() {
+	
+	   $("#oneFunction .button").css("font-size", "13px");
+	   $("#oneFunction .button").css("font-weight", "bold");
+	   $("#oneFunction .button").css("padding", "4px 6px");
+	   $("#oneFunction .button").css("border", "0px");
+	   $("#oneFunction .button").css("border-radius", "0px");
+	   $("#oneFunction .button").css("background-color", "transparent");
+	   $("#oneFunction .button").css("background-image", "none");
+}
+
+/**
+ * 过滤网管菜单
+ */
+function filterFunction(perId) {
+	
+	switch(perId) {
+		
+		// 告警管理
+		case "4028811c41a001630141a137fc0d0357":
+			return true;
+		// 拓扑管理
+		case "4028811c41a001630141a138023603dd":
+			return true;
+		// 资源管理
+		case "4028811c41a001630141a13804970413":
+			return true;
+		// 性能管理
+		case "4028811c41a001630141a1380ce304cb":
+			return true;
+		// 统计报表->通信数据分析报表
+		case "4028811c41a001630141a13811a5052f":
+			return true;
+		// 配置管理->资源统计
+		case "4028811c41a001630141a13814060565":
+			return true;
+		// 配置管理->资源利用率统计
+		case "4028811c41a001630141a13814b20573":
+			return true;
+		// 配置管理->资源调度统计
+		case "4028811c41a001630141a13815000579":
+			return true;
+		// 配置管理-基础配置->数据字典
+		case "4028811c41a001630141a138135a0555":
+			return true;
+		// 系统管理->机构管理->区域
+		case "4028811c41a001630141a13815db058b":
+			return true;
+		// 系统管理->机构管理->岗位
+		case "4028811c41a001630141a13816380593":
+			return true;
+		// 系统管理->日志管理->操作日志
+		case "4028811c41a001630141a138180c05b9":
+			return true;
+		// 系统管理->系统自身管理
+		case "4028811c41a001630141a138181c05bb":
+			return true;
+		// 系统管理->配置管理
+		case "4028811c41a001630141a13818a805c7":
+			return true;
+//			// 施工管理->点内维修计划管理
+//		case "20181105sggl-dnwxjhgl":
+//			return true;
+//			// 技术管理->通信设备管理
+//		case "20181105tzgl-txllbgl":
+//			return true;
+			// 技术管理->技术资料管理->技术台账
+		case "9d882a91e0904924b4c8f71facb15cfb":
+			return true;
+			// 技术管理->技术资料管理->竣工资料
+		case "4028811c41a001630141a137f2990289":
+			return true;
+		default:
+			return false;
+	}
+}
+
+/**
+ * 初始化左侧菜单节点
+ */
+function initLeftFunction(onePerId, onePerDesc){
+
+	$("#leftNavigator").empty();
+
+	// 查询左侧菜单
+	$.ajax({
+		   type: "post",
+		   dataType: "json", 
+		   url: contextPath + "permission/getNextPers.cn",
+		   data:"curPerId=" + onePerId,
+		   async: false,
+		   success: function(response){
+
+			   // 便利二级菜单
+			   $.each(response,function(i,data){
+				  
+				   var twoPerId = data.id;
+				   var twoPerDesc = data.permissionDesc;
+				   var twoContent = "<div class='subNav'>" + twoPerDesc + "</div>";
+
+				    // 过滤网管菜单
+				   if(filterFunction(twoPerId)) {
+					  
+					   return true;
+				   }
+				   
+				   var threeHeight = $(window).height() - 74 - 30*response.length;
+					// 三级菜单内容
+				   var threeContent = "<ul class='navContent' style='overflow:auto;height:" + threeHeight + "px;'>";
+					// 便利三级菜单
+				   $.each(data.children, function(i,childData){
+							
+					   var threeModulePath = childData.module.modulePath;
+					   var threeModuleIcon = childData.module.iconName;
+					   var threePerName = childData.permissionDesc;
+					   var threePerId = childData.id;
+					    // 过滤网管菜单
+					   if(filterFunction(threePerId)) {
+						 
+						   return true;
+					   }
+					   if(threePerName == '组织机构'){
+						   threeModulePath = '../views/system/organizationPage.jsp';
+					   }
+					   if(threePerName == '用户'){
+						   threeModulePath = '../views/system/userManager.jsp';
+					   }
+					   if(threePerName == '角色'){
+						   threeModulePath = '../views/system/roleManage.jsp';
+					   }
+					   if(threePerName == '登录日志'){
+						   threeModulePath = '../views/system/loginChartPage.jsp';
+					   }
+					   threeContent += "<li class='leftFuction' id='menu_id_"+threePerId+"' onselectstart='return false;' onclick=\"menuClick(\'"+threePerName+"\',\'"+threeModulePath+"\',\'"+threePerId+"\')\"><img src='"+contextPath+"resource/"+threeModuleIcon+"'/><div>"+threePerName+"</div></li>";//一个功能按钮
+					});
+				   
+				   twoContent += threeContent + "</ul>";
+				   $("#leftNavigator").append(twoContent);
+			   });
+			   $(".subNav").click(function(){
+				   $(this).toggleClass("currentDd").siblings(".subNav").removeClass("currentDd");
+				   $(this).toggleClass("currentDt").siblings(".subNav").removeClass("currentDt");
+				   // 修改数字控制速度， slideUp(500)控制卷起速度
+				   $(this).next(".navContent").slideToggle(500).siblings(".navContent").slideUp(500);
+			   });
+		   }
+	});
+}
+
+/**左侧菜单点击后在右侧弹出tab页方法
+ * @param threePerName
+ * @param threeModulePath
+ * @param threePerId
+ */
+function menuClick(threePerName,threeModulePath,threePerId){
+	
+	var goUrl = "/kunmingrinms/resource/" + threeModulePath + "?threePerId="+ threePerId;
+	if(threeModulePath.indexOf("devManageView") > 0
+			|| threeModulePath.indexOf("lineLedgerView") > 0) {
+		goUrl = "http://10.206.97.8:8000/RINMS2MAIN/autologin.jsp?threePerId="+ threePerId+"&userId=" + loginUserId;
+	} else if(threeModulePath.indexOf("../") == -1){
+		goUrl = "http://10.206.97.8:8000/kmad/autologin.jsp?threePerId="+ threePerId+"&userId=" + loginUserId;
+	}
+	
+	if(threeModulePath.lastIndexOf("Kmms") != -1){
+		goUrl = "http://localhost:7000/kmms/indexKmms?actionPath="+threeModulePath + "&userId=" + loginUserId + "&threePerId=" + threePerId;
+	}
+    
+	var config = {
+	    title : threePerName,
+        href : goUrl,
+        id : threePerId
+	};
+	tab.addTab(config);
+	changeSelectMenuColor(threePerId);//保证首次点击菜单时会变色
+}
+
+/**改变左侧选中菜单的颜色并清除其它菜单的颜色
+ * @param threePerId
+ */
+function changeSelectMenuColor(threePerId){
+	$('.leftFuction').css("background-color","white");
+	$('#menu_id_'+threePerId).css("background-color","#3399ff");
+}
+
+
+BUI.use(['bui/layout','bui/tab', 'bui/overlay'],function (Layout, Tab, Overlay) {//使用BUI声明布局、tab容器、根据后台数据生成左侧菜单
+	
+	tab = new Tab.NavTab({//右侧tab容器
+		render : '#mainContainer',
+		height : '100%',
+        layout : {
+	       	 region : 'center',
+	       	 fit : 'both'
+         },
+         forceFit : true
+    });
+	//新打开tab页或者tab页切换对应的菜单变色
+	tab.on('activedchange',function(e){
+		var menuId = e.item.get('id');
+		changeSelectMenuColor(menuId);
+	});
+	tab.render();
+	
+	/**
+	 * 修改密码弹出框
+	 */
+	function updatePassDialogCreate(){
+		updatePassDialog = new Overlay.Dialog({
+			title : '修改密码',
+			width : 400,
+			height : 170,
+			closeAction : 'destroy',//关闭时销毁加载到主页面的HTML对象
+			mask : true,//非模态弹出框
+			bodyStyle : {padding : 0},
+			buttons : [ {
+				text : '保存',
+				elCls : 'button',
+				handler :function(){
+						// 表单验证
+						if(!updatePassForm.isValid()) {
+							return ;
+						}
+						$.post(contextPath + 'userAction/resetUser.cn',
+								{
+									password : $("#password").val(),
+									userId : loginUserId
+								},function(data,status){
+									if(status){
+										alert("密码修改成功！");
+									}else{
+										alert("密码修改失败！");
+									}
+							});
+						
+						
+						dialogClose(updatePassDialog);
+					}
+				}, {
+					text : '关闭',
+					elCls : 'button',
+					handler : function() {
+						dialogClose(updatePassDialog);
+					}
+				}],
+			loader : {
+				url : contextPath + 'views/system/userUpdatePass.jsp',
+				autoLoad : false,
+				lazyLoad : false,
+				dataType : 'html'
+			}
+		});
+		return updatePassDialog;
+	}
+	
+	/**
+	 * 关闭弹出框并解除引用
+	 * param:d 待关闭的弹出框
+	 */
+	function dialogClose(d){
+		d.close();
+		d = null;
+	}
+	
+	function updatePass() {
+		
+	}
+	
+	$("#updatePass").click(function() {
+		var updatePassDialog = updatePassDialogCreate();
+		updatePassDialog.show();
+		updatePassDialog.get('loader').load();
+	});
+});

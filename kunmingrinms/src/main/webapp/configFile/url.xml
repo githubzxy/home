@@ -1,0 +1,10 @@
+<urls>
+<!-- 	<url>
+		<content>http://10.167.74.201/sczh/Private/remoteLogin.jsp</content>
+		<remark>辉煌路径</remark>
+	</url> -->
+	<url>
+		<content>http://127.0.0.1:8000/guangtieConverterApp/AttachFileShowAction/fileFormatConvert.cn</content>
+		<remark>运维文件转换</remark>
+	</url>
+</urls>

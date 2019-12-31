@@ -1,0 +1,140 @@
+body,td,th {
+	font-size: 12px;
+}
+a{
+	color:#333333;
+	text-decoration:none;
+	cursor:pointer;
+}
+a:hover{
+	text-decoration:none;
+}
+a.faction{color:#72D0F4; text-decoration:none;}
+a.faction:hover{color:#ffffff;}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color:#353D40;
+	padding:0 0 0 0 ;
+}
+
+.header {
+	width: 100%;
+	height: 72px;
+	margin-left: 0;
+	margin-right: 0;
+	background-color: #EEEEEE;
+}
+
+.header_info {
+	width:100%;
+	height: 74px;
+	position: absolute;
+}
+
+.header_info_user {
+	color:#72D0F4; 
+	line-height:2.2;
+	float: right;
+	height: 25px;
+	margin-top: 20px;
+	text-align:right;
+	width:390px;
+}
+
+
+.header_info_help {
+	margin-top: 5px;
+	float: right;
+	height: 25px;
+	text-align: right;
+	padding-right: 10px;
+}
+
+.header_info_exit {
+	margin-top: 5px;
+	float: right;
+	height: 25spx;
+	text-align: right;
+	padding-right: 10px;
+}
+
+.function_info{
+	position: absolute;
+	z-index:0;
+	color:#72D0F4; 
+	height:74px; 
+	padding: 45px 0 0 25%;
+}
+.content {
+	width: 100%;
+	height: 670px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2px;
+}
+
+.content_left {
+	width: 15%;
+	height: 670px;
+	float: left;
+	background-color:#FFFFFF;
+}
+.content_left_title{
+	padding-left: 3px;
+	height: 28px;
+	font-size:12px;
+	font-weight:bold;
+	line-height: 27px;
+	border: 1px solid #95B8E7;
+}
+/*.content_center {
+	float: left;
+	width: 1%;
+	height: 670px;
+	line-height: 50%;
+	text-align: center;
+}*/
+
+/**中部*/
+/*.middle {
+	width: 1%;
+	height: 44px;
+	top: 50%;
+	bottom: 50%;
+	position: absolute;
+	cursor: pointer;
+}*/
+
+.content_right {
+	width: 85%;
+	height: 650px;
+	float: left;
+	background-color:#FFFFFF;
+}
+
+.page_content {
+	border-left: 1px solid #95B8E7;
+	border-bottom: 1px solid #95B8E7;
+	border-right: 1px solid #95B8E7;
+	width:100%;
+	height:100%;
+	border:0 solid #ffffff;
+	overflow-x: hidden;
+	overflow-y:auto;
+	background-color:#FFFFFF;
+	
+}
+
+.index_menu {
+	overflow:auto;
+	text-align:center;
+	-moz-user-select:none;
+	-webkit-user-select:none;
+}
+
+.hover{
+	background:#cedbef;
+}
